@@ -1,0 +1,2 @@
+product_id,product_name,year_month,orders_received,orders_shipped,on_time_delivery_rate
+F101000,FIT,2025-11,1000,900,0.9
