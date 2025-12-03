@@ -20,18 +20,17 @@ MESシステムは製造実行および出荷実績を管理するシステム�
 | カラム名 | 型 | 制約 | 説明 |
 | ------ | ------ | ------ | ------ |
 | shipment_id | VARCHA‌R | FK | 出荷伝票ヘッダーの `shipment_id` を参照。 |
-| order_id | VARCHA‌R |  | 元受注伝票の `order_id`（関連がある場合）。 |
+| order_id | VARCHA‌R | FK | 元受注伝票の `order_id`（ERP受注伝票_headerの `order_id` を参照）。受注伝票と出荷伝票は1:Nの関係を持ち、1つの受注に対して複数回の分納出荷が発生する場合がある。データ整合性として、受注伝票_itemの各 `order_id` + `line_number` + `product_id` の組み合わせに対する `quantity`（受注数量）と、出荷伝票_itemの同じ `order_id` + `line_number` + `product_id` の組み合わせに対するすべての `quantity`（出荷数量）の合計が一致する必要がある。これにより、受注された数量がすべて出荷されたことを検証できる。 |
 | line_number | VARCHA‌R |  | 明細番号（出荷伝票内の行識別子）。 |
 | product_id | VARCHA‌R |  | 出荷品目のコード。 |
-| product_name | VARCHA‌R |  | 出荷品目の名称（スナップショット）。 |
 | quantity | DECIMAL |  | 出荷数量（単位はマスタに従う）。 |
 | carrier_name | VARCHA‌R |  | 運送業者名（キャリア）。 |
 | transportation_mode | VARCHA‌R |  | 輸送モード（例: road, sea, air）。 |
 | planned_ship_date | DATE |  | 計画出荷日（日付）。 |
 | actual_ship_timestamp | TIMESTAMP |  | 実績出荷日時。 |
 | expected_ship_date | DATE |  | 期待出荷日（予測）。 |
-| actual_arrival_timestamp | TIMESTAMP |  | 実到着日時（受領日時）。 |
-| delivery_status | VARCHA‌R |  | 配送ステータス（例: pending, in_transit, delivered, delayed）。 |
+| actual_arrival_timestamp | TIMESTAMP |  | 実到着日時（受領日時）。NULL の場合は配送中であることを示す。 |
+| delivery_status | VARCHA‌R |  | 配送ステータス（例: pending, in_transit, delivered, delayed）。データ整合性として、`actual_arrival_timestamp` が過去の日時（現在時刻より前）である場合、`delivery_status` は 'delivered' または 'delayed' のいずれかである必要がある。`actual_arrival_timestamp` が NULL（空欄）の場合、`delivery_status` は 'in_transit' である必要がある。さらに、'delivered' と 'delayed' の判定基準として、受注伝票_item の `promised_delivery_date`（納入予定日）と `actual_arrival_timestamp`（実到着日時）を比較し、`actual_arrival_timestamp` が `promised_delivery_date` より遅い場合は 'delayed'、それ以外は 'delivered' とする。これにより、配送状況の論理的な一貫性と遅延の判定基準を保つ。 |
 
 #### 取引先マスタテーブル
 **概要** : 取引先（サプライヤー、ディーラー、顧客等）の基本情報を保持するブロンズ層マスタテーブルです。調達先、販売先、物流業者など、すべての取引先を統合管理します。取引先区分により、サプライヤー向けの調達処理や、ディーラー向けの受注・出荷処理に利用されます。
@@ -55,7 +54,7 @@ MESシステムは製造実行および出荷実績を管理するシステム�
 | currency | VARCHA‌R |  | 取引通貨（ISO 4217、例: 'JPY', 'USD', 'EUR'）。この取引先との標準取引通貨。 |
 | is_active | VARCHA‌R |  | 有効フラグ（例: active, inactive）。取引中/取引停止を示す。 |
 | account_group | VARCHA‌R |  | アカウントグループ（社内の管理区分や購買組織コード）。 |
-| region | VARCHA‌R |  | 地域区分（例: domestic, overseas, north_america, europe, asia）。国内/海外、エリア別の分類。 |
+| region | VARCHA‌R | FK | 地域区分、domestic/overseasのbinary。受注データにおいて、この項目が"domestic"の場合は品目マスタのimport_export_groupが"domestic"の商品のみ扱う。この項目が"overseas"の場合は品目マスタのimport_export_groupが"export"の商品のみ扱う。 |
 | valid_from | DATE |  | 有効開始日。取引開始日または取引先登録日。 |
 | valid_to | DATE |  | 有効終了日。取引終了日。現在取引中の場合は NULL または '9999-12-31'。 |
 

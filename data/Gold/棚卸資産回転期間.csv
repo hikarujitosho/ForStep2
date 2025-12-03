@@ -1,4 +1,4 @@
-year_month,monthly_cogs,inventory_value,inventory_rotation_period
+﻿year_month,monthly_cogs,inventory_value,inventory_rotation_period
 2025-11,1500000000,15000000000,300.0
 2025-10,1450000000,14500000000,300.0
 2025-09,1480000000,15540000000,314.6
@@ -10,3 +10,6 @@ year_month,monthly_cogs,inventory_value,inventory_rotation_period
 2025-03,1350000000,14175000000,314.4
 2025-02,1320000000,13464000000,305.5
 2025-01,1300000000,12870000000,296.7
+
+
+

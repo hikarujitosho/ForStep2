@@ -35,17 +35,41 @@ P2Pシステムは間接材の購買業務（Purchase to Pay）を管理する�
 **概要** : 調達発注明細の情報（明細行単位の情報）を保持するブロンズ層テーブルです。発注した品目、数量、単価、納品日などを格納します。headerテーブルと1:Nのリレーションです。
 | カラム名 | 型 | 制約 | 説明 |
 | ------ | ------ | ------ | ------ |
-| line_item_id | VARCHA‌R | PK | 明細行ID（明細行の一意識別子）。 |
-| purchase_order_id | VARCHA‌R | FK | 発注ID（ヘッダーテーブルとの連携キー）。 |
-| product_id | VARCHA‌R | FK | 品目ID（製品マスタまたは部品マスタの識別子）。 |
-| product_name | VARCHA‌R |  | 品目名（スナップショット）。 |
-| quantity_ordered | DECIMAL |  | 発注数量（単位は `unit_of_measure` 参照）。 |
-| unit_of_measure | VARCHA‌R |  | 単位（例: 個, kg, m2, ケース）。 |
-| unit_price_ex_tax | DECIMAL |  | 単価（税抜、通貨単位は header の `currency` に従う）。 |
-| line_total_ex_tax | DECIMAL |  | 明細合計（税抜、= quantity_ordered × unit_price_ex_tax）。 |
+| purchase_order_id | VARCHA‌R | PK, FK | 発注ID（ヘッダーテーブルとの連携キー）。 |
+| line_number | INTEGER | PK | 明細行番号（発注内での行番号）。 |
+| material_id | VARCHA‌R |  | 資材ID（調達する部品・材料の識別子）。直接材の場合はBOMマスタの `component_product_id` がここに格納され、間接材の場合は間接材固有のIDが格納される。調達対象となる部品・材料を一意に識別。 |
+| material_name | VARCHA‌R |  | 資材名（調達する部品・材料の名称）。直接材の場合はBOMマスタの `bom_name` がここに格納され、間接材の場合は間接材の品名が格納される。 |
+| material_category | VARCHA‌R |  | 資材カテゴリ（例: Engine Parts, Electronic Components, Safety Equipment, Office Equipment, Factory Consumables）。直接材・間接材の分類。 |
+| material_type | VARCHA‌R |  | 資材タイプ（'direct' または 'indirect'）。直接材（製造に直接使用される部品・材料）か間接材（MRO資材・消耗品）かを識別。 |
+| product_id | VARCHA‌R | FK | 製品ID（完成品との連携キー）。この調達が対応する完成車（製品）のIDをリレーション用に保持。品目マスタの `product_id` を参照。受注データから製造計画を立て、どの完成車向けの部品調達かをトレース可能にする。 |
+| unspsc_code | VARCHA‌R |  | UNSPSC分類コード（国連標準製品・サービス分類コード）。 |
+| quantity | DECIMAL |  | 発注数量。 |
+| unit_price_ex_tax | DECIMAL |  | 単価（税抜）。 |
+| line_subtotal_incl_tax | DECIMAL |  | 明細小計（税込）。 |
+| line_subtotal_ex_tax | DECIMAL |  | 明細小計（税抜）。 |
+| line_tax_amount | DECIMAL |  | 明細消費税額。 |
+| line_tax_rate | DECIMAL |  | 明細税率（例: 0.1 = 10%）。 |
+| line_shipping_fee_incl_tax | DECIMAL |  | 明細送料（税込）。 |
+| line_discount_incl_tax | DECIMAL |  | 明細値引額（税込）。 |
+| line_total_incl_tax | DECIMAL |  | 明細合計（税込）。 |
+| reference_price_ex_tax | DECIMAL |  | 参考価格（税抜）。 |
+| purchase_rule | VARCHA‌R |  | 購買ルール（例: 該当無し）。 |
+| ship_date | DATE |  | 出荷日。YYYY-MM-DD 形式。 |
+| shipping_status | VARCHA‌R |  | 配送ステータス（例: delivered, in_transit, pending）。 |
+| carrier_tracking_number | VARCHA‌R |  | 配送業者追跡番号。 |
+| shipped_quantity | DECIMAL |  | 出荷済数量。 |
+| carrier_name | VARCHA‌R |  | 配送業者名（例: Amazon, ヤマト運輸, 佐川急便）。 |
+| delivery_address | VARCHA‌R |  | 配送先住所（住所、郵便番号、都道府県を含む）。 |
+| receiving_status | VARCHA‌R |  | 受領ステータス（例: received, pending, rejected）。 |
+| received_quantity | DECIMAL |  | 受領済数量（検収済み数量）。 |
 | received_date | DATE |  | 実際の納品日。リードタイム遵守率算出に使用。YYYY-MM-DD 形式。 |
-| quantity_received | DECIMAL |  | 受領済数量（検収済み数量）。 |
-| inspection_status | VARCHA‌R |  | 検品ステータス（例: pending, passed, failed）。 |
+| receiver_name | VARCHA‌R |  | 受領者名。 |
+| receiver_email | VARCHA‌R |  | 受領者メールアドレス。 |
+| cost_center | VARCHA‌R |  | コストセンターコード（原価管理用）。 |
+| project_code | VARCHA‌R |  | プロジェクトコード（プロジェクト別管理用）。 |
+| department_code | VARCHA‌R |  | 部門コード。 |
+| account_user | VARCHA‌R |  | アカウントユーザー（発注者名）。 |
+| user_email | VARCHA‌R |  | ユーザーメールアドレス（発注者のメールアドレス）。 |
 
 #### 取引先マスタテーブル
 **概要** : 取引先（サプライヤー、ディーラー、顧客等）の基本情報を保持するブロンズ層マスタテーブルです。調達先、販売先、物流業者など、すべての取引先を統合管理します。取引先区分により、サプライヤー向けの調達処理や、ディーラー向けの受注・出荷処理に利用されます。
@@ -69,25 +93,22 @@ P2Pシステムは間接材の購買業務（Purchase to Pay）を管理する�
 | currency | VARCHA‌R |  | 取引通貨（ISO 4217、例: 'JPY', 'USD', 'EUR'）。この取引先との標準取引通貨。 |
 | is_active | VARCHA‌R |  | 有効フラグ（例: active, inactive）。取引中/取引停止を示す。 |
 | account_group | VARCHA‌R |  | アカウントグループ（社内の管理区分や購買組織コード）。 |
-| region | VARCHA‌R |  | 地域区分（例: domestic, overseas, north_america, europe, asia）。国内/海外、エリア別の分類。 |
+| region | VARCHA‌R | FK | 地域区分、domestic/overseasのbinary。受注データにおいて、この項目が"domestic"の場合は品目マスタのimport_export_groupが"domestic"の商品のみ扱う。この項目が"overseas"の場合は品目マスタのimport_export_groupが"export"の商品のみ扱う。 |
 | valid_from | DATE |  | 有効開始日。取引開始日または取引先登録日。 |
 | valid_to | DATE |  | 有効終了日。取引終了日。現在取引中の場合は NULL または '9999-12-31'。 |
 
 #### BOMマスタテーブル
-**概要** : 部品表（Bill of Materials）情報を保持するブロンズ層マスタテーブルです。完成品を構成する部品の一覧と、それぞれの使用数量を定義します。原価計算、所要量計算、サプライチェーン分析の基礎データとなります。
+**概要** : Bill of Materials（部品表）の構成情報を保持するブロンズ層マスタテーブルです。製品を構成する部品・材料の関係、必要数量を管理します。製造計画や所要量計算（MRP）の基礎データとなります。P2Pシステムでは調達管理用にサプライヤー情報を追加保持します。
 | カラム名 | 型 | 制約 | 説明 |
 | ------ | ------ | ------ | ------ |
-| bom_id | VARCHA‌R | PK | BOM ID（部品表明細の一意識別子）。 |
-| finished_good_id | VARCHA‌R | FK | 完成品ID（親アイテムの識別子）。品目マスタを参照。 |
-| finished_good_name | VARCHA‌R |  | 完成品名（スナップショット）。 |
-| component_id | VARCHA‌R | FK | 部品ID（子アイテムの識別子）。品目マスタを参照。 |
-| component_name | VARCHA‌R |  | 部品名（スナップショット）。 |
-| quantity_per_unit | DECIMAL |  | 使用数量（完成品1個あたりの部品使用数量）。 |
-| unit_of_measure | VARCHA‌R |  | 単位（例: 個, kg, m2, ケース）。 |
-| supplier_id | VARCHA‌R | FK | サプライヤーID（この部品の主要供給元）。取引先マスタを参照。 |
-| supplier_name | VARCHA‌R |  | サプライヤー名（スナップショット）。 |
-| location_id | VARCHA‌R | FK | 製造拠点ID（この完成品を製造する拠点の識別子）。拠点マスタを参照。 |
-| component_category | VARCHA‌R |  | 部品カテゴリ（例: engine_parts, electronic_components, body_parts, trim_parts）。部品種別の分類。 |
-| is_critical | VARCHA‌R |  | 重要部品フラグ（例: yes, no）。サプライチェーン上のリスク管理対象かどうか。 |
-| valid_from | DATE |  | 有効開始日。この部品構成の適用開始日（設計変更のバージョン管理に使用）。 |
-| valid_to | DATE |  | 有効終了日。設計変更で部品構成が無効化される日。現行版は NULL または '9999-12-31'。 |
+| bom_id | VARCHA‌R | PK | BOMレコードの一意識別子（ID）。製品ID、拠点ID、構成部品IDの組み合わせで生成されることが多い。 |
+| bom_name | VARCHA‌R |  | BOMレコードの名称（表示用）。親品目名や工程名を含む識別しやすい名称。 |
+| product_id | VARCHA‌R |  | 親品目コード（完成品または組立品のID）。製品マスタの `product_id` を参照。 |
+| site_id | VARCHA‌R |  | 拠点コード（生産拠点の識別子）。拠点ごとに異なるBOM構成を持つ場合に使用。 |
+| production_process_id | VARCHA‌R |  | 生産プロセスID（製造工程や作業指示の識別子）。工程別のBOM管理に利用。 |
+| component_product_id | VARCHA‌R |  | 構成部品コード（子品目のID）。この親品目を構成する部品・材料のID。 |
+| component_quantity_per | DECIMAL |  | 構成部品の必要数量（親品目1単位あたりの使用数量）。 |
+| component_quantity_uom | VARCHA‌R |  | 構成部品の数量単位（例: EACHES, KG, LITER）。 |
+| supplier_id | VARCHA‌R | FK | サプライヤーID（この部品の主要供給元）。P2P固有項目。取引先マスタを参照。 |
+| component_category | VARCHA‌R |  | 部品カテゴリ（例: engine_parts, electronic_components, body_parts, trim_parts）。P2P固有項目。部品種別の分類。 |
+| is_critical | VARCHA‌R |  | 重要部品フラグ（例: yes, no）。P2P固有項目。サプライチェーン上のリスク管理対象かどうか。 |
