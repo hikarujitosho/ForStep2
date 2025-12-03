@@ -30,3 +30,4 @@ LOG-002,ヤマト運輸,logistics_provider,logistics_carrier,2010-01-008952,銀�
 LOG-003,佐川急便,logistics_provider,logistics_carrier,3600-01-009506,南港北2-1-19,大阪市,大阪府,559-0034,JP,斎藤誠,m.saito@sagawa-exp.example.com,06-6569-0111,NET30,32000000,JPY,active,物流部門,domestic,2017-01-01,9999-12-31
 CUST-001,トヨタレンタリース,customer,corporate_customer,4130-01-012345,京橋1-1-1,中央区,東京都,104-0031,JP,田中正樹,m.tanaka@toyota-rental.example.com,03-5555-8001,NET45,80000000,JPY,active,法人営業部,domestic,2020-06-01,9999-12-31
 CUST-002,オリックス自動車,customer,corporate_customer,5105-01-023456,芝公園2-4-1,港区,東京都,105-0011,JP,木村康平,k.kimura@orix-auto.example.com,03-5555-9001,NET45,75000000,JPY,active,法人営業部,domestic,2021-03-15,9999-12-31
+
