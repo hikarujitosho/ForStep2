@@ -1,0 +1,545 @@
+﻿year_month,product_id,product_name,item_hierarchy,item_group,sales_quantity,is_ev
+2022-01,CRV-RT5,CR-V,ICE,suv,39,False
+2022-01,FIT-GR3,FIT,ICE,compact_car,47,False
+2022-01,FRD-GB5,FREED,ICE,minivan,10,False
+2022-01,HDE-ZC1,Honda e,EV,compact_ev,15,True
+2022-01,NOE-JG4,N-ONE e:,EV,compact_suv_ev,14,True
+2022-01,SWN-RP6,STEP WGN,ICE,minivan,7,False
+2022-01,VZL-RV3,VEZEL,ICE,suv,16,False
+2022-01,ZRV-RZ3,ZR-V,ICE,compact_suv,11,False
+2022-02,CRV-RT5,CR-V,ICE,suv,28,False
+2022-02,ENP-ENP1,e:NP1,EV,suv_ev,31,True
+2022-02,FIT-GR3,FIT,ICE,compact_car,14,False
+2022-02,FRD-GB5,FREED,ICE,minivan,5,False
+2022-02,HDE-ZC1,Honda e,EV,compact_ev,11,True
+2022-02,NOE-JG4,N-ONE e:,EV,compact_suv_ev,10,True
+2022-02,ODY-RC1,ODYSSEY,ICE,premium_minivan,12,False
+2022-02,PLT-YF3,PILOT,ICE,premium_suv,10,False
+2022-02,RDG-YF6,RIDGELINE,ICE,pickup_truck,11,False
+2022-02,SWN-RP6,STEP WGN,ICE,minivan,14,False
+2022-02,VZL-RV3,VEZEL,ICE,suv,5,False
+2022-02,ZRV-RZ3,ZR-V,ICE,compact_suv,11,False
+2022-03,ACD-CV1,ACCORD,ICE,sedan,6,False
+2022-03,ENP-ENP1,e:NP1,EV,suv_ev,13,True
+2022-03,FIT-GR3,FIT,ICE,compact_car,23,False
+2022-03,FRD-GB5,FREED,ICE,minivan,15,False
+2022-03,HDE-ZC1,Honda e,EV,compact_ev,7,True
+2022-03,NOE-JG4,N-ONE e:,EV,compact_suv_ev,10,True
+2022-03,ODY-RC1,ODYSSEY,ICE,premium_minivan,5,False
+2022-03,PLT-YF3,PILOT,ICE,premium_suv,5,False
+2022-03,PRO-ZC5,Prologue,EV,premium_suv_ev,5,True
+2022-03,PSP-YF7,PASSPORT,ICE,suv,10,False
+2022-03,RDG-YF6,RIDGELINE,ICE,pickup_truck,27,False
+2022-03,SWN-RP6,STEP WGN,ICE,minivan,6,False
+2022-03,VZL-RV3,VEZEL,ICE,suv,2,False
+2022-03,ZRV-RZ3,ZR-V,ICE,compact_suv,36,False
+2022-04,ENP-ENP1,e:NP1,EV,suv_ev,27,True
+2022-04,FIT-GR3,FIT,ICE,compact_car,27,False
+2022-04,FRD-GB5,FREED,ICE,minivan,1,False
+2022-04,HDE-ZC1,Honda e,EV,compact_ev,11,True
+2022-04,NOE-JG4,N-ONE e:,EV,compact_suv_ev,9,True
+2022-04,PRO-ZC5,Prologue,EV,premium_suv_ev,16,True
+2022-04,SWN-RP6,STEP WGN,ICE,minivan,8,False
+2022-04,VZL-RV3,VEZEL,ICE,suv,17,False
+2022-04,ZRV-RZ3,ZR-V,ICE,compact_suv,17,False
+2022-05,ENP-ENP1,e:NP1,EV,suv_ev,7,True
+2022-05,FIT-GR3,FIT,ICE,compact_car,20,False
+2022-05,FRD-GB5,FREED,ICE,minivan,20,False
+2022-05,HDE-ZC1,Honda e,EV,compact_ev,16,True
+2022-05,NOE-JG4,N-ONE e:,EV,compact_suv_ev,10,True
+2022-05,ODY-RC1,ODYSSEY,ICE,premium_minivan,46,False
+2022-05,PRO-ZC5,Prologue,EV,premium_suv_ev,5,True
+2022-05,PSP-YF7,PASSPORT,ICE,suv,5,False
+2022-05,RDG-YF6,RIDGELINE,ICE,pickup_truck,5,False
+2022-05,SWN-RP6,STEP WGN,ICE,minivan,25,False
+2022-05,VZL-RV3,VEZEL,ICE,suv,17,False
+2022-05,ZRV-RZ3,ZR-V,ICE,compact_suv,3,False
+2022-06,ACD-CV1,ACCORD,ICE,sedan,5,False
+2022-06,CRV-RT5,CR-V,ICE,suv,46,False
+2022-06,ENP-ENP1,e:NP1,EV,suv_ev,31,True
+2022-06,FIT-GR3,FIT,ICE,compact_car,20,False
+2022-06,FRD-GB5,FREED,ICE,minivan,17,False
+2022-06,HDE-ZC1,Honda e,EV,compact_ev,7,True
+2022-06,NOE-JG4,N-ONE e:,EV,compact_suv_ev,21,True
+2022-06,ODY-RC1,ODYSSEY,ICE,premium_minivan,18,False
+2022-06,PLT-YF3,PILOT,ICE,premium_suv,5,False
+2022-06,RDG-YF6,RIDGELINE,ICE,pickup_truck,22,False
+2022-06,SWN-RP6,STEP WGN,ICE,minivan,12,False
+2022-06,VZL-RV3,VEZEL,ICE,suv,16,False
+2022-06,ZRV-RZ3,ZR-V,ICE,compact_suv,3,False
+2022-07,ENP-ENP1,e:NP1,EV,suv_ev,6,True
+2022-07,FIT-GR3,FIT,ICE,compact_car,26,False
+2022-07,FRD-GB5,FREED,ICE,minivan,5,False
+2022-07,HDE-ZC1,Honda e,EV,compact_ev,25,True
+2022-07,NOE-JG4,N-ONE e:,EV,compact_suv_ev,18,True
+2022-07,PLT-YF3,PILOT,ICE,premium_suv,8,False
+2022-07,PRO-ZC5,Prologue,EV,premium_suv_ev,5,True
+2022-07,RDG-YF6,RIDGELINE,ICE,pickup_truck,20,False
+2022-07,SWN-RP6,STEP WGN,ICE,minivan,14,False
+2022-07,VZL-RV3,VEZEL,ICE,suv,5,False
+2022-07,ZRV-RZ3,ZR-V,ICE,compact_suv,8,False
+2022-08,CRV-RT5,CR-V,ICE,suv,39,False
+2022-08,ENP-ENP1,e:NP1,EV,suv_ev,8,True
+2022-08,FIT-GR3,FIT,ICE,compact_car,11,False
+2022-08,FRD-GB5,FREED,ICE,minivan,3,False
+2022-08,HDE-ZC1,Honda e,EV,compact_ev,13,True
+2022-08,NOE-JG4,N-ONE e:,EV,compact_suv_ev,17,True
+2022-08,ODY-RC1,ODYSSEY,ICE,premium_minivan,18,False
+2022-08,PRO-ZC5,Prologue,EV,premium_suv_ev,6,True
+2022-08,SWN-RP6,STEP WGN,ICE,minivan,6,False
+2022-08,VZL-RV3,VEZEL,ICE,suv,10,False
+2022-08,ZRV-RZ3,ZR-V,ICE,compact_suv,33,False
+2022-09,ACD-CV1,ACCORD,ICE,sedan,5,False
+2022-09,CRV-RT5,CR-V,ICE,suv,21,False
+2022-09,ENP-ENP1,e:NP1,EV,suv_ev,46,True
+2022-09,FIT-GR3,FIT,ICE,compact_car,12,False
+2022-09,FRD-GB5,FREED,ICE,minivan,8,False
+2022-09,HDE-ZC1,Honda e,EV,compact_ev,6,True
+2022-09,NOE-JG4,N-ONE e:,EV,compact_suv_ev,7,True
+2022-09,PLT-YF3,PILOT,ICE,premium_suv,16,False
+2022-09,PRO-ZC5,Prologue,EV,premium_suv_ev,5,True
+2022-09,RDG-YF6,RIDGELINE,ICE,pickup_truck,14,False
+2022-09,SWN-RP6,STEP WGN,ICE,minivan,21,False
+2022-09,VZL-RV3,VEZEL,ICE,suv,17,False
+2022-09,ZRV-RZ3,ZR-V,ICE,compact_suv,19,False
+2022-10,ACD-CV1,ACCORD,ICE,sedan,8,False
+2022-10,CRV-RT5,CR-V,ICE,suv,50,False
+2022-10,ENP-ENP1,e:NP1,EV,suv_ev,26,True
+2022-10,FIT-GR3,FIT,ICE,compact_car,15,False
+2022-10,FRD-GB5,FREED,ICE,minivan,21,False
+2022-10,HDE-ZC1,Honda e,EV,compact_ev,23,True
+2022-10,NOE-JG4,N-ONE e:,EV,compact_suv_ev,19,True
+2022-10,PRO-ZC5,Prologue,EV,premium_suv_ev,5,True
+2022-10,RDG-YF6,RIDGELINE,ICE,pickup_truck,5,False
+2022-10,SWN-RP6,STEP WGN,ICE,minivan,16,False
+2022-10,VZL-RV3,VEZEL,ICE,suv,11,False
+2022-10,ZRV-RZ3,ZR-V,ICE,compact_suv,11,False
+2022-11,ACD-CV1,ACCORD,ICE,sedan,5,False
+2022-11,CRV-RT5,CR-V,ICE,suv,46,False
+2022-11,ENP-ENP1,e:NP1,EV,suv_ev,23,True
+2022-11,FIT-GR3,FIT,ICE,compact_car,7,False
+2022-11,FRD-GB5,FREED,ICE,minivan,12,False
+2022-11,HDE-ZC1,Honda e,EV,compact_ev,12,True
+2022-11,NOE-JG4,N-ONE e:,EV,compact_suv_ev,11,True
+2022-11,ODY-RC1,ODYSSEY,ICE,premium_minivan,20,False
+2022-11,SWN-RP6,STEP WGN,ICE,minivan,20,False
+2022-11,VZL-RV3,VEZEL,ICE,suv,13,False
+2022-11,ZRV-RZ3,ZR-V,ICE,compact_suv,9,False
+2022-12,ACD-CV1,ACCORD,ICE,sedan,11,False
+2022-12,FIT-GR3,FIT,ICE,compact_car,3,False
+2022-12,FRD-GB5,FREED,ICE,minivan,6,False
+2022-12,HDE-ZC1,Honda e,EV,compact_ev,32,True
+2022-12,NOE-JG4,N-ONE e:,EV,compact_suv_ev,16,True
+2022-12,ODY-RC1,ODYSSEY,ICE,premium_minivan,5,False
+2022-12,PRO-ZC5,Prologue,EV,premium_suv_ev,5,True
+2022-12,RDG-YF6,RIDGELINE,ICE,pickup_truck,6,False
+2022-12,SWN-RP6,STEP WGN,ICE,minivan,13,False
+2022-12,VZL-RV3,VEZEL,ICE,suv,27,False
+2022-12,ZRV-RZ3,ZR-V,ICE,compact_suv,6,False
+2023-01,ACD-CV1,ACCORD,ICE,sedan,21,False
+2023-01,CRV-RT5,CR-V,ICE,suv,10,False
+2023-01,ENP-ENP1,e:NP1,EV,suv_ev,5,True
+2023-01,FIT-GR3,FIT,ICE,compact_car,10,False
+2023-01,FRD-GB5,FREED,ICE,minivan,14,False
+2023-01,HDE-ZC1,Honda e,EV,compact_ev,14,True
+2023-01,NOE-JG4,N-ONE e:,EV,compact_suv_ev,8,True
+2023-01,ODY-RC1,ODYSSEY,ICE,premium_minivan,5,False
+2023-01,PLT-YF3,PILOT,ICE,premium_suv,5,False
+2023-01,PSP-YF7,PASSPORT,ICE,suv,5,False
+2023-01,RDG-YF6,RIDGELINE,ICE,pickup_truck,48,False
+2023-01,SWN-RP6,STEP WGN,ICE,minivan,12,False
+2023-01,VZL-RV3,VEZEL,ICE,suv,4,False
+2023-01,ZRV-RZ3,ZR-V,ICE,compact_suv,17,False
+2023-02,ACD-CV1,ACCORD,ICE,sedan,16,False
+2023-02,FIT-GR3,FIT,ICE,compact_car,5,False
+2023-02,FRD-GB5,FREED,ICE,minivan,17,False
+2023-02,HDE-ZC1,Honda e,EV,compact_ev,20,True
+2023-02,NOE-JG4,N-ONE e:,EV,compact_suv_ev,15,True
+2023-02,PRO-ZC5,Prologue,EV,premium_suv_ev,5,True
+2023-02,PSP-YF7,PASSPORT,ICE,suv,44,False
+2023-02,SWN-RP6,STEP WGN,ICE,minivan,15,False
+2023-02,VZL-RV3,VEZEL,ICE,suv,26,False
+2023-02,ZRV-RZ3,ZR-V,ICE,compact_suv,10,False
+2023-03,ACD-CV1,ACCORD,ICE,sedan,5,False
+2023-03,CRV-RT5,CR-V,ICE,suv,11,False
+2023-03,ENP-ENP1,e:NP1,EV,suv_ev,20,True
+2023-03,FIT-GR3,FIT,ICE,compact_car,26,False
+2023-03,FRD-GB5,FREED,ICE,minivan,11,False
+2023-03,HDE-ZC1,Honda e,EV,compact_ev,5,True
+2023-03,NOE-JG4,N-ONE e:,EV,compact_suv_ev,10,True
+2023-03,PLT-YF3,PILOT,ICE,premium_suv,10,False
+2023-03,RDG-YF6,RIDGELINE,ICE,pickup_truck,8,False
+2023-03,SWN-RP6,STEP WGN,ICE,minivan,5,False
+2023-03,VZL-RV3,VEZEL,ICE,suv,28,False
+2023-03,ZRV-RZ3,ZR-V,ICE,compact_suv,15,False
+2023-04,CRV-RT5,CR-V,ICE,suv,11,False
+2023-04,ENP-ENP1,e:NP1,EV,suv_ev,5,True
+2023-04,FIT-GR3,FIT,ICE,compact_car,27,False
+2023-04,FRD-GB5,FREED,ICE,minivan,1,False
+2023-04,HDE-ZC1,Honda e,EV,compact_ev,18,True
+2023-04,NOE-JG4,N-ONE e:,EV,compact_suv_ev,7,True
+2023-04,PRO-ZC5,Prologue,EV,premium_suv_ev,23,True
+2023-04,PSP-YF7,PASSPORT,ICE,suv,5,False
+2023-04,RDG-YF6,RIDGELINE,ICE,pickup_truck,5,False
+2023-04,SWN-RP6,STEP WGN,ICE,minivan,9,False
+2023-04,VZL-RV3,VEZEL,ICE,suv,10,False
+2023-04,ZRV-RZ3,ZR-V,ICE,compact_suv,2,False
+2023-05,ACD-CV1,ACCORD,ICE,sedan,15,False
+2023-05,CRV-RT5,CR-V,ICE,suv,5,False
+2023-05,ENP-ENP1,e:NP1,EV,suv_ev,11,True
+2023-05,FIT-GR3,FIT,ICE,compact_car,13,False
+2023-05,FRD-GB5,FREED,ICE,minivan,5,False
+2023-05,HDE-ZC1,Honda e,EV,compact_ev,18,True
+2023-05,NOE-JG4,N-ONE e:,EV,compact_suv_ev,8,True
+2023-05,PRO-ZC5,Prologue,EV,premium_suv_ev,39,True
+2023-05,PSP-YF7,PASSPORT,ICE,suv,32,False
+2023-05,RDG-YF6,RIDGELINE,ICE,pickup_truck,5,False
+2023-05,SWN-RP6,STEP WGN,ICE,minivan,12,False
+2023-05,VZL-RV3,VEZEL,ICE,suv,11,False
+2023-05,ZRV-RZ3,ZR-V,ICE,compact_suv,17,False
+2023-06,ACD-CV1,ACCORD,ICE,sedan,5,False
+2023-06,ENP-ENP1,e:NP1,EV,suv_ev,5,True
+2023-06,FIT-GR3,FIT,ICE,compact_car,4,False
+2023-06,FRD-GB5,FREED,ICE,minivan,12,False
+2023-06,HDE-ZC1,Honda e,EV,compact_ev,19,True
+2023-06,NOE-JG4,N-ONE e:,EV,compact_suv_ev,24,True
+2023-06,PLT-YF3,PILOT,ICE,premium_suv,5,False
+2023-06,PRO-ZC5,Prologue,EV,premium_suv_ev,10,True
+2023-06,PSP-YF7,PASSPORT,ICE,suv,5,False
+2023-06,RDG-YF6,RIDGELINE,ICE,pickup_truck,17,False
+2023-06,SWN-RP6,STEP WGN,ICE,minivan,10,False
+2023-06,VZL-RV3,VEZEL,ICE,suv,5,False
+2023-06,ZRV-RZ3,ZR-V,ICE,compact_suv,23,False
+2023-07,ACD-CV1,ACCORD,ICE,sedan,31,False
+2023-07,CRV-RT5,CR-V,ICE,suv,14,False
+2023-07,ENP-ENP1,e:NP1,EV,suv_ev,5,True
+2023-07,FIT-GR3,FIT,ICE,compact_car,27,False
+2023-07,FRD-GB5,FREED,ICE,minivan,3,False
+2023-07,HDE-ZC1,Honda e,EV,compact_ev,16,True
+2023-07,NOE-JG4,N-ONE e:,EV,compact_suv_ev,19,True
+2023-07,PLT-YF3,PILOT,ICE,premium_suv,5,False
+2023-07,PRO-ZC5,Prologue,EV,premium_suv_ev,31,True
+2023-07,PSP-YF7,PASSPORT,ICE,suv,44,False
+2023-07,SWN-RP6,STEP WGN,ICE,minivan,13,False
+2023-07,VZL-RV3,VEZEL,ICE,suv,17,False
+2023-07,ZRV-RZ3,ZR-V,ICE,compact_suv,11,False
+2023-08,ENP-ENP1,e:NP1,EV,suv_ev,42,True
+2023-08,FIT-GR3,FIT,ICE,compact_car,26,False
+2023-08,FRD-GB5,FREED,ICE,minivan,10,False
+2023-08,HDE-ZC1,Honda e,EV,compact_ev,5,True
+2023-08,NOE-JG4,N-ONE e:,EV,compact_suv_ev,16,True
+2023-08,ODY-RC1,ODYSSEY,ICE,premium_minivan,12,False
+2023-08,RDG-YF6,RIDGELINE,ICE,pickup_truck,37,False
+2023-08,SWN-RP6,STEP WGN,ICE,minivan,17,False
+2023-08,VZL-RV3,VEZEL,ICE,suv,9,False
+2023-08,ZRV-RZ3,ZR-V,ICE,compact_suv,7,False
+2023-09,CRV-RT5,CR-V,ICE,suv,30,False
+2023-09,FIT-GR3,FIT,ICE,compact_car,18,False
+2023-09,FRD-GB5,FREED,ICE,minivan,20,False
+2023-09,HDE-ZC1,Honda e,EV,compact_ev,12,True
+2023-09,NOE-JG4,N-ONE e:,EV,compact_suv_ev,7,True
+2023-09,ODY-RC1,ODYSSEY,ICE,premium_minivan,5,False
+2023-09,PLT-YF3,PILOT,ICE,premium_suv,15,False
+2023-09,PRO-ZC5,Prologue,EV,premium_suv_ev,38,True
+2023-09,PSP-YF7,PASSPORT,ICE,suv,10,False
+2023-09,SWN-RP6,STEP WGN,ICE,minivan,5,False
+2023-09,VZL-RV3,VEZEL,ICE,suv,28,False
+2023-09,ZRV-RZ3,ZR-V,ICE,compact_suv,19,False
+2023-10,CRV-RT5,CR-V,ICE,suv,10,False
+2023-10,ENP-ENP1,e:NP1,EV,suv_ev,50,True
+2023-10,FIT-GR3,FIT,ICE,compact_car,11,False
+2023-10,FRD-GB5,FREED,ICE,minivan,18,False
+2023-10,HDE-ZC1,Honda e,EV,compact_ev,4,True
+2023-10,NOE-JG4,N-ONE e:,EV,compact_suv_ev,9,True
+2023-10,PLT-YF3,PILOT,ICE,premium_suv,7,False
+2023-10,PSP-YF7,PASSPORT,ICE,suv,5,False
+2023-10,RDG-YF6,RIDGELINE,ICE,pickup_truck,8,False
+2023-10,SWN-RP6,STEP WGN,ICE,minivan,26,False
+2023-10,VZL-RV3,VEZEL,ICE,suv,25,False
+2023-10,ZRV-RZ3,ZR-V,ICE,compact_suv,13,False
+2023-11,ACD-CV1,ACCORD,ICE,sedan,13,False
+2023-11,CRV-RT5,CR-V,ICE,suv,5,False
+2023-11,ENP-ENP1,e:NP1,EV,suv_ev,10,True
+2023-11,FIT-GR3,FIT,ICE,compact_car,12,False
+2023-11,FRD-GB5,FREED,ICE,minivan,7,False
+2023-11,HDE-ZC1,Honda e,EV,compact_ev,26,True
+2023-11,NOE-JG4,N-ONE e:,EV,compact_suv_ev,11,True
+2023-11,ODY-RC1,ODYSSEY,ICE,premium_minivan,43,False
+2023-11,PLT-YF3,PILOT,ICE,premium_suv,5,False
+2023-11,PRO-ZC5,Prologue,EV,premium_suv_ev,5,True
+2023-11,PSP-YF7,PASSPORT,ICE,suv,18,False
+2023-11,RDG-YF6,RIDGELINE,ICE,pickup_truck,5,False
+2023-11,SWN-RP6,STEP WGN,ICE,minivan,12,False
+2023-11,VZL-RV3,VEZEL,ICE,suv,7,False
+2023-11,ZRV-RZ3,ZR-V,ICE,compact_suv,13,False
+2023-12,ACD-CV1,ACCORD,ICE,sedan,5,False
+2023-12,FIT-GR3,FIT,ICE,compact_car,21,False
+2023-12,FRD-GB5,FREED,ICE,minivan,10,False
+2023-12,HDE-ZC1,Honda e,EV,compact_ev,10,True
+2023-12,NOE-JG4,N-ONE e:,EV,compact_suv_ev,6,True
+2023-12,PRO-ZC5,Prologue,EV,premium_suv_ev,5,True
+2023-12,SWN-RP6,STEP WGN,ICE,minivan,22,False
+2023-12,VZL-RV3,VEZEL,ICE,suv,7,False
+2023-12,ZRV-RZ3,ZR-V,ICE,compact_suv,12,False
+2024-01,ACD-CV1,ACCORD,ICE,sedan,10,False
+2024-01,CRV-RT5,CR-V,ICE,suv,8,False
+2024-01,ENP-ENP1,e:NP1,EV,suv_ev,5,True
+2024-01,FIT-GR3,FIT,ICE,compact_car,8,False
+2024-01,FRD-GB5,FREED,ICE,minivan,16,False
+2024-01,HDE-ZC1,Honda e,EV,compact_ev,19,True
+2024-01,NOE-JG4,N-ONE e:,EV,compact_suv_ev,18,True
+2024-01,ODY-RC1,ODYSSEY,ICE,premium_minivan,10,False
+2024-01,PLT-YF3,PILOT,ICE,premium_suv,8,False
+2024-01,PRO-ZC5,Prologue,EV,premium_suv_ev,29,True
+2024-01,SWN-RP6,STEP WGN,ICE,minivan,12,False
+2024-01,VZL-RV3,VEZEL,ICE,suv,45,False
+2024-01,ZRV-RZ3,ZR-V,ICE,compact_suv,19,False
+2024-02,ACD-CV1,ACCORD,ICE,sedan,10,False
+2024-02,CRV-RT5,CR-V,ICE,suv,10,False
+2024-02,FIT-GR3,FIT,ICE,compact_car,8,False
+2024-02,FRD-GB5,FREED,ICE,minivan,3,False
+2024-02,HDE-ZC1,Honda e,EV,compact_ev,7,True
+2024-02,NOE-JG4,N-ONE e:,EV,compact_suv_ev,14,True
+2024-02,ODY-RC1,ODYSSEY,ICE,premium_minivan,18,False
+2024-02,PLT-YF3,PILOT,ICE,premium_suv,24,False
+2024-02,PRO-ZC5,Prologue,EV,premium_suv_ev,24,True
+2024-02,RDG-YF6,RIDGELINE,ICE,pickup_truck,11,False
+2024-02,SWN-RP6,STEP WGN,ICE,minivan,1,False
+2024-02,VZL-RV3,VEZEL,ICE,suv,14,False
+2024-02,ZRV-RZ3,ZR-V,ICE,compact_suv,7,False
+2024-03,ENP-ENP1,e:NP1,EV,suv_ev,44,True
+2024-03,FIT-GR3,FIT,ICE,compact_car,12,False
+2024-03,FRD-GB5,FREED,ICE,minivan,9,False
+2024-03,HDE-ZC1,Honda e,EV,compact_ev,25,True
+2024-03,NOE-JG4,N-ONE e:,EV,compact_suv_ev,14,True
+2024-03,SWN-RP6,STEP WGN,ICE,minivan,5,False
+2024-03,VZL-RV3,VEZEL,ICE,suv,18,False
+2024-03,ZRV-RZ3,ZR-V,ICE,compact_suv,15,False
+2024-04,ENP-ENP1,e:NP1,EV,suv_ev,42,True
+2024-04,FIT-GR3,FIT,ICE,compact_car,1,False
+2024-04,FRD-GB5,FREED,ICE,minivan,11,False
+2024-04,HDE-ZC1,Honda e,EV,compact_ev,19,True
+2024-04,NOE-JG4,N-ONE e:,EV,compact_suv_ev,16,True
+2024-04,PRO-ZC5,Prologue,EV,premium_suv_ev,8,True
+2024-04,PSP-YF7,PASSPORT,ICE,suv,24,False
+2024-04,SWN-RP6,STEP WGN,ICE,minivan,16,False
+2024-04,VZL-RV3,VEZEL,ICE,suv,11,False
+2024-04,ZRV-RZ3,ZR-V,ICE,compact_suv,10,False
+2024-05,ACD-CV1,ACCORD,ICE,sedan,5,False
+2024-05,FIT-GR3,FIT,ICE,compact_car,3,False
+2024-05,FRD-GB5,FREED,ICE,minivan,17,False
+2024-05,HDE-ZC1,Honda e,EV,compact_ev,22,True
+2024-05,NOE-JG4,N-ONE e:,EV,compact_suv_ev,9,True
+2024-05,ODY-RC1,ODYSSEY,ICE,premium_minivan,5,False
+2024-05,PLT-YF3,PILOT,ICE,premium_suv,15,False
+2024-05,PRO-ZC5,Prologue,EV,premium_suv_ev,10,True
+2024-05,PSP-YF7,PASSPORT,ICE,suv,29,False
+2024-05,RDG-YF6,RIDGELINE,ICE,pickup_truck,23,False
+2024-05,SWN-RP6,STEP WGN,ICE,minivan,10,False
+2024-05,VZL-RV3,VEZEL,ICE,suv,11,False
+2024-05,ZRV-RZ3,ZR-V,ICE,compact_suv,17,False
+2024-06,FIT-GR3,FIT,ICE,compact_car,22,False
+2024-06,FRD-GB5,FREED,ICE,minivan,24,False
+2024-06,HDE-ZC1,Honda e,EV,compact_ev,1,True
+2024-06,NOE-JG4,N-ONE e:,EV,compact_suv_ev,10,True
+2024-06,SWN-RP6,STEP WGN,ICE,minivan,10,False
+2024-06,VZL-RV3,VEZEL,ICE,suv,19,False
+2024-06,ZRV-RZ3,ZR-V,ICE,compact_suv,18,False
+2024-07,ACD-CV1,ACCORD,ICE,sedan,14,False
+2024-07,CRV-RT5,CR-V,ICE,suv,5,False
+2024-07,ENP-ENP1,e:NP1,EV,suv_ev,31,True
+2024-07,FIT-GR3,FIT,ICE,compact_car,17,False
+2024-07,FRD-GB5,FREED,ICE,minivan,21,False
+2024-07,HDE-ZC1,Honda e,EV,compact_ev,14,True
+2024-07,NOE-JG4,N-ONE e:,EV,compact_suv_ev,11,True
+2024-07,ODY-RC1,ODYSSEY,ICE,premium_minivan,5,False
+2024-07,PLT-YF3,PILOT,ICE,premium_suv,5,False
+2024-07,PSP-YF7,PASSPORT,ICE,suv,17,False
+2024-07,RDG-YF6,RIDGELINE,ICE,pickup_truck,5,False
+2024-07,SWN-RP6,STEP WGN,ICE,minivan,19,False
+2024-07,VZL-RV3,VEZEL,ICE,suv,16,False
+2024-07,ZRV-RZ3,ZR-V,ICE,compact_suv,8,False
+2024-08,ACD-CV1,ACCORD,ICE,sedan,23,False
+2024-08,CRV-RT5,CR-V,ICE,suv,27,False
+2024-08,ENP-ENP1,e:NP1,EV,suv_ev,5,True
+2024-08,FIT-GR3,FIT,ICE,compact_car,27,False
+2024-08,FRD-GB5,FREED,ICE,minivan,12,False
+2024-08,HDE-ZC1,Honda e,EV,compact_ev,27,True
+2024-08,NOE-JG4,N-ONE e:,EV,compact_suv_ev,14,True
+2024-08,PLT-YF3,PILOT,ICE,premium_suv,20,False
+2024-08,RDG-YF6,RIDGELINE,ICE,pickup_truck,11,False
+2024-08,SWN-RP6,STEP WGN,ICE,minivan,13,False
+2024-08,VZL-RV3,VEZEL,ICE,suv,16,False
+2024-08,ZRV-RZ3,ZR-V,ICE,compact_suv,4,False
+2024-09,CRV-RT5,CR-V,ICE,suv,5,False
+2024-09,ENP-ENP1,e:NP1,EV,suv_ev,5,True
+2024-09,FIT-GR3,FIT,ICE,compact_car,5,False
+2024-09,FRD-GB5,FREED,ICE,minivan,21,False
+2024-09,HDE-ZC1,Honda e,EV,compact_ev,30,True
+2024-09,NOE-JG4,N-ONE e:,EV,compact_suv_ev,19,True
+2024-09,ODY-RC1,ODYSSEY,ICE,premium_minivan,5,False
+2024-09,PLT-YF3,PILOT,ICE,premium_suv,19,False
+2024-09,PRO-ZC5,Prologue,EV,premium_suv_ev,5,True
+2024-09,PSP-YF7,PASSPORT,ICE,suv,9,False
+2024-09,SWN-RP6,STEP WGN,ICE,minivan,9,False
+2024-09,VZL-RV3,VEZEL,ICE,suv,15,False
+2024-09,ZRV-RZ3,ZR-V,ICE,compact_suv,16,False
+2024-10,ACD-CV1,ACCORD,ICE,sedan,5,False
+2024-10,FIT-GR3,FIT,ICE,compact_car,8,False
+2024-10,FRD-GB5,FREED,ICE,minivan,6,False
+2024-10,HDE-ZC1,Honda e,EV,compact_ev,12,True
+2024-10,NOE-JG4,N-ONE e:,EV,compact_suv_ev,13,True
+2024-10,PLT-YF3,PILOT,ICE,premium_suv,5,False
+2024-10,RDG-YF6,RIDGELINE,ICE,pickup_truck,5,False
+2024-10,SWN-RP6,STEP WGN,ICE,minivan,10,False
+2024-10,VZL-RV3,VEZEL,ICE,suv,15,False
+2024-10,ZRV-RZ3,ZR-V,ICE,compact_suv,37,False
+2024-11,ACD-CV1,ACCORD,ICE,sedan,40,False
+2024-11,ENP-ENP1,e:NP1,EV,suv_ev,25,True
+2024-11,FIT-GR3,FIT,ICE,compact_car,16,False
+2024-11,FRD-GB5,FREED,ICE,minivan,9,False
+2024-11,HDE-ZC1,Honda e,EV,compact_ev,17,True
+2024-11,NOE-JG4,N-ONE e:,EV,compact_suv_ev,22,True
+2024-11,ODY-RC1,ODYSSEY,ICE,premium_minivan,6,False
+2024-11,SWN-RP6,STEP WGN,ICE,minivan,28,False
+2024-11,VZL-RV3,VEZEL,ICE,suv,13,False
+2024-11,ZRV-RZ3,ZR-V,ICE,compact_suv,10,False
+2024-12,ACD-CV1,ACCORD,ICE,sedan,10,False
+2024-12,CRV-RT5,CR-V,ICE,suv,6,False
+2024-12,ENP-ENP1,e:NP1,EV,suv_ev,5,True
+2024-12,FIT-GR3,FIT,ICE,compact_car,1,False
+2024-12,FRD-GB5,FREED,ICE,minivan,6,False
+2024-12,HDE-ZC1,Honda e,EV,compact_ev,15,True
+2024-12,NOE-JG4,N-ONE e:,EV,compact_suv_ev,3,True
+2024-12,PLT-YF3,PILOT,ICE,premium_suv,23,False
+2024-12,PRO-ZC5,Prologue,EV,premium_suv_ev,16,True
+2024-12,PSP-YF7,PASSPORT,ICE,suv,20,False
+2024-12,RDG-YF6,RIDGELINE,ICE,pickup_truck,6,False
+2024-12,SWN-RP6,STEP WGN,ICE,minivan,12,False
+2024-12,VZL-RV3,VEZEL,ICE,suv,23,False
+2024-12,ZRV-RZ3,ZR-V,ICE,compact_suv,18,False
+2025-01,FIT-GR3,FIT,ICE,compact_car,21,False
+2025-01,FRD-GB5,FREED,ICE,minivan,18,False
+2025-01,HDE-ZC1,Honda e,EV,compact_ev,13,True
+2025-01,NOE-JG4,N-ONE e:,EV,compact_suv_ev,8,True
+2025-01,SWN-RP6,STEP WGN,ICE,minivan,33,False
+2025-01,VZL-RV3,VEZEL,ICE,suv,17,False
+2025-01,ZRV-RZ3,ZR-V,ICE,compact_suv,17,False
+2025-02,ACD-CV1,ACCORD,ICE,sedan,23,False
+2025-02,ENP-ENP1,e:NP1,EV,suv_ev,56,True
+2025-02,FIT-GR3,FIT,ICE,compact_car,10,False
+2025-02,FRD-GB5,FREED,ICE,minivan,34,False
+2025-02,HDE-ZC1,Honda e,EV,compact_ev,8,True
+2025-02,NOE-JG4,N-ONE e:,EV,compact_suv_ev,9,True
+2025-02,ODY-RC1,ODYSSEY,ICE,premium_minivan,5,False
+2025-02,PRO-ZC5,Prologue,EV,premium_suv_ev,18,True
+2025-02,RDG-YF6,RIDGELINE,ICE,pickup_truck,19,False
+2025-02,SWN-RP6,STEP WGN,ICE,minivan,15,False
+2025-02,VZL-RV3,VEZEL,ICE,suv,9,False
+2025-02,ZRV-RZ3,ZR-V,ICE,compact_suv,9,False
+2025-03,CRV-RT5,CR-V,ICE,suv,5,False
+2025-03,ENP-ENP1,e:NP1,EV,suv_ev,49,True
+2025-03,FIT-GR3,FIT,ICE,compact_car,16,False
+2025-03,FRD-GB5,FREED,ICE,minivan,9,False
+2025-03,HDE-ZC1,Honda e,EV,compact_ev,17,True
+2025-03,NOE-JG4,N-ONE e:,EV,compact_suv_ev,3,True
+2025-03,ODY-RC1,ODYSSEY,ICE,premium_minivan,14,False
+2025-03,PSP-YF7,PASSPORT,ICE,suv,5,False
+2025-03,RDG-YF6,RIDGELINE,ICE,pickup_truck,12,False
+2025-03,SWN-RP6,STEP WGN,ICE,minivan,25,False
+2025-03,VZL-RV3,VEZEL,ICE,suv,14,False
+2025-03,ZRV-RZ3,ZR-V,ICE,compact_suv,20,False
+2025-04,FIT-GR3,FIT,ICE,compact_car,5,False
+2025-04,FRD-GB5,FREED,ICE,minivan,12,False
+2025-04,HDE-ZC1,Honda e,EV,compact_ev,20,True
+2025-04,NOE-JG4,N-ONE e:,EV,compact_suv_ev,14,True
+2025-04,PRO-ZC5,Prologue,EV,premium_suv_ev,37,True
+2025-04,RDG-YF6,RIDGELINE,ICE,pickup_truck,61,False
+2025-04,SWN-RP6,STEP WGN,ICE,minivan,6,False
+2025-04,VZL-RV3,VEZEL,ICE,suv,19,False
+2025-04,ZRV-RZ3,ZR-V,ICE,compact_suv,25,False
+2025-05,FIT-GR3,FIT,ICE,compact_car,11,False
+2025-05,FRD-GB5,FREED,ICE,minivan,5,False
+2025-05,HDE-ZC1,Honda e,EV,compact_ev,29,True
+2025-05,NOE-JG4,N-ONE e:,EV,compact_suv_ev,13,True
+2025-05,SWN-RP6,STEP WGN,ICE,minivan,9,False
+2025-05,VZL-RV3,VEZEL,ICE,suv,14,False
+2025-05,ZRV-RZ3,ZR-V,ICE,compact_suv,19,False
+2025-06,FIT-GR3,FIT,ICE,compact_car,26,False
+2025-06,FRD-GB5,FREED,ICE,minivan,7,False
+2025-06,HDE-ZC1,Honda e,EV,compact_ev,13,True
+2025-06,NOE-JG4,N-ONE e:,EV,compact_suv_ev,9,True
+2025-06,PLT-YF3,PILOT,ICE,premium_suv,5,False
+2025-06,PRO-ZC5,Prologue,EV,premium_suv_ev,17,True
+2025-06,PSP-YF7,PASSPORT,ICE,suv,16,False
+2025-06,RDG-YF6,RIDGELINE,ICE,pickup_truck,16,False
+2025-06,SWN-RP6,STEP WGN,ICE,minivan,14,False
+2025-06,VZL-RV3,VEZEL,ICE,suv,18,False
+2025-06,ZRV-RZ3,ZR-V,ICE,compact_suv,20,False
+2025-07,ACD-CV1,ACCORD,ICE,sedan,45,False
+2025-07,ENP-ENP1,e:NP1,EV,suv_ev,5,True
+2025-07,FIT-GR3,FIT,ICE,compact_car,20,False
+2025-07,FRD-GB5,FREED,ICE,minivan,6,False
+2025-07,HDE-ZC1,Honda e,EV,compact_ev,20,True
+2025-07,NOE-JG4,N-ONE e:,EV,compact_suv_ev,6,True
+2025-07,PLT-YF3,PILOT,ICE,premium_suv,29,False
+2025-07,PRO-ZC5,Prologue,EV,premium_suv_ev,43,True
+2025-07,RDG-YF6,RIDGELINE,ICE,pickup_truck,5,False
+2025-07,SWN-RP6,STEP WGN,ICE,minivan,13,False
+2025-07,VZL-RV3,VEZEL,ICE,suv,20,False
+2025-07,ZRV-RZ3,ZR-V,ICE,compact_suv,16,False
+2025-08,CRV-RT5,CR-V,ICE,suv,5,False
+2025-08,ENP-ENP1,e:NP1,EV,suv_ev,5,True
+2025-08,FIT-GR3,FIT,ICE,compact_car,2,False
+2025-08,FRD-GB5,FREED,ICE,minivan,9,False
+2025-08,HDE-ZC1,Honda e,EV,compact_ev,21,True
+2025-08,NOE-JG4,N-ONE e:,EV,compact_suv_ev,27,True
+2025-08,RDG-YF6,RIDGELINE,ICE,pickup_truck,10,False
+2025-08,SWN-RP6,STEP WGN,ICE,minivan,14,False
+2025-08,VZL-RV3,VEZEL,ICE,suv,25,False
+2025-08,ZRV-RZ3,ZR-V,ICE,compact_suv,21,False
+2025-09,ACD-CV1,ACCORD,ICE,sedan,28,False
+2025-09,CRV-RT5,CR-V,ICE,suv,10,False
+2025-09,ENP-ENP1,e:NP1,EV,suv_ev,32,True
+2025-09,FIT-GR3,FIT,ICE,compact_car,6,False
+2025-09,FRD-GB5,FREED,ICE,minivan,14,False
+2025-09,HDE-ZC1,Honda e,EV,compact_ev,15,True
+2025-09,NOE-JG4,N-ONE e:,EV,compact_suv_ev,5,True
+2025-09,ODY-RC1,ODYSSEY,ICE,premium_minivan,5,False
+2025-09,PRO-ZC5,Prologue,EV,premium_suv_ev,5,True
+2025-09,RDG-YF6,RIDGELINE,ICE,pickup_truck,21,False
+2025-09,SWN-RP6,STEP WGN,ICE,minivan,14,False
+2025-09,VZL-RV3,VEZEL,ICE,suv,12,False
+2025-09,ZRV-RZ3,ZR-V,ICE,compact_suv,25,False
+2025-10,ACD-CV1,ACCORD,ICE,sedan,15,False
+2025-10,CRV-RT5,CR-V,ICE,suv,5,False
+2025-10,ENP-ENP1,e:NP1,EV,suv_ev,5,True
+2025-10,FIT-GR3,FIT,ICE,compact_car,6,False
+2025-10,FRD-GB5,FREED,ICE,minivan,17,False
+2025-10,HDE-ZC1,Honda e,EV,compact_ev,21,True
+2025-10,NOE-JG4,N-ONE e:,EV,compact_suv_ev,10,True
+2025-10,ODY-RC1,ODYSSEY,ICE,premium_minivan,20,False
+2025-10,PLT-YF3,PILOT,ICE,premium_suv,5,False
+2025-10,PRO-ZC5,Prologue,EV,premium_suv_ev,24,True
+2025-10,PSP-YF7,PASSPORT,ICE,suv,5,False
+2025-10,RDG-YF6,RIDGELINE,ICE,pickup_truck,5,False
+2025-10,SWN-RP6,STEP WGN,ICE,minivan,16,False
+2025-10,VZL-RV3,VEZEL,ICE,suv,13,False
+2025-10,ZRV-RZ3,ZR-V,ICE,compact_suv,14,False
+2025-11,ACD-CV1,ACCORD,ICE,sedan,14,False
+2025-11,ENP-ENP1,e:NP1,EV,suv_ev,24,True
+2025-11,FIT-GR3,FIT,ICE,compact_car,9,False
+2025-11,FRD-GB5,FREED,ICE,minivan,23,False
+2025-11,HDE-ZC1,Honda e,EV,compact_ev,4,True
+2025-11,NOE-JG4,N-ONE e:,EV,compact_suv_ev,25,True
+2025-11,ODY-RC1,ODYSSEY,ICE,premium_minivan,12,False
+2025-11,PLT-YF3,PILOT,ICE,premium_suv,5,False
+2025-11,PSP-YF7,PASSPORT,ICE,suv,29,False
+2025-11,RDG-YF6,RIDGELINE,ICE,pickup_truck,6,False
+2025-11,SWN-RP6,STEP WGN,ICE,minivan,22,False
+2025-11,VZL-RV3,VEZEL,ICE,suv,16,False
+2025-11,ZRV-RZ3,ZR-V,ICE,compact_suv,13,False
+2025-12,FIT-GR3,FIT,ICE,compact_car,2,False
+2025-12,FRD-GB5,FREED,ICE,minivan,7,False
+2025-12,HDE-ZC1,Honda e,EV,compact_ev,1,True
+2025-12,NOE-JG4,N-ONE e:,EV,compact_suv_ev,1,True
