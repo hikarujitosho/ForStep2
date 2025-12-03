@@ -69,25 +69,24 @@ P2Pシステムは間接材の購買業務（Purchase to Pay）を管理する�
 | currency | VARCHA‌R |  | 取引通貨（ISO 4217、例: 'JPY', 'USD', 'EUR'）。この取引先との標準取引通貨。 |
 | is_active | VARCHA‌R |  | 有効フラグ（例: active, inactive）。取引中/取引停止を示す。 |
 | account_group | VARCHA‌R |  | アカウントグループ（社内の管理区分や購買組織コード）。 |
-| region | VARCHA‌R |  | 地域区分（例: domestic, overseas, north_america, europe, asia）。国内/海外、エリア別の分類。 |
+| region | VARCHA‌R | FK | 地域区分、domestic/overseasのbinary。受注データにおいて、この項目が"domestic"の場合は品目マスタのimport_export_groupが"domestic"の商品のみ扱う。この項目が"overseas"の場合は品目マスタのimport_export_groupが"export"の商品のみ扱う。 |
 | valid_from | DATE |  | 有効開始日。取引開始日または取引先登録日。 |
 | valid_to | DATE |  | 有効終了日。取引終了日。現在取引中の場合は NULL または '9999-12-31'。 |
 
 #### BOMマスタテーブル
-**概要** : 部品表（Bill of Materials）情報を保持するブロンズ層マスタテーブルです。完成品を構成する部品の一覧と、それぞれの使用数量を定義します。原価計算、所要量計算、サプライチェーン分析の基礎データとなります。
+**概要** : Bill of Materials（部品表）の構成情報を保持するブロンズ層マスタテーブルです。製品を構成する部品・材料の関係、必要数量、有効期間を管理します。製造計画や所要量計算（MRP）の基礎データとなります。P2Pシステムでは調達管理用にサプライヤー情報を追加保持します。
 | カラム名 | 型 | 制約 | 説明 |
 | ------ | ------ | ------ | ------ |
-| bom_id | VARCHA‌R | PK | BOM ID（部品表明細の一意識別子）。 |
-| finished_good_id | VARCHA‌R | FK | 完成品ID（親アイテムの識別子）。品目マスタを参照。 |
-| finished_good_name | VARCHA‌R |  | 完成品名（スナップショット）。 |
-| component_id | VARCHA‌R | FK | 部品ID（子アイテムの識別子）。品目マスタを参照。 |
-| component_name | VARCHA‌R |  | 部品名（スナップショット）。 |
-| quantity_per_unit | DECIMAL |  | 使用数量（完成品1個あたりの部品使用数量）。 |
-| unit_of_measure | VARCHA‌R |  | 単位（例: 個, kg, m2, ケース）。 |
-| supplier_id | VARCHA‌R | FK | サプライヤーID（この部品の主要供給元）。取引先マスタを参照。 |
-| supplier_name | VARCHA‌R |  | サプライヤー名（スナップショット）。 |
-| location_id | VARCHA‌R | FK | 製造拠点ID（この完成品を製造する拠点の識別子）。拠点マスタを参照。 |
-| component_category | VARCHA‌R |  | 部品カテゴリ（例: engine_parts, electronic_components, body_parts, trim_parts）。部品種別の分類。 |
-| is_critical | VARCHA‌R |  | 重要部品フラグ（例: yes, no）。サプライチェーン上のリスク管理対象かどうか。 |
-| valid_from | DATE |  | 有効開始日。この部品構成の適用開始日（設計変更のバージョン管理に使用）。 |
-| valid_to | DATE |  | 有効終了日。設計変更で部品構成が無効化される日。現行版は NULL または '9999-12-31'。 |
+| bom_id | VARCHA‌R | PK | BOMレコードの一意識別子（ID）。製品ID、拠点ID、構成部品IDの組み合わせで生成されることが多い。 |
+| bom_name | VARCHA‌R |  | BOMレコードの名称（表示用）。親品目名や工程名を含む識別しやすい名称。 |
+| product_id | VARCHA‌R |  | 親品目コード（完成品または組立品のID）。製品マスタの `product_id` を参照。 |
+| site_id | VARCHA‌R |  | 拠点コード（生産拠点の識別子）。拠点ごとに異なるBOM構成を持つ場合に使用。 |
+| production_process_id | VARCHA‌R |  | 生産プロセスID（製造工程や作業指示の識別子）。工程別のBOM管理に利用。 |
+| component_product_id | VARCHA‌R |  | 構成部品コード（子品目のID）。この親品目を構成する部品・材料のID。 |
+| component_quantity_per | DECIMAL |  | 構成部品の必要数量（親品目1単位あたりの使用数量）。 |
+| component_quantity_uom | VARCHA‌R |  | 構成部品の数量単位（例: EACHES, KG, LITER）。 |
+| supplier_id | VARCHA‌R | FK | サプライヤーID（この部品の主要供給元）。P2P固有項目。取引先マスタを参照。 |
+| component_category | VARCHA‌R |  | 部品カテゴリ（例: engine_parts, electronic_components, body_parts, trim_parts）。P2P固有項目。部品種別の分類。 |
+| is_critical | VARCHA‌R |  | 重要部品フラグ（例: yes, no）。P2P固有項目。サプライチェーン上のリスク管理対象かどうか。 |
+| eff_start_date | DATE |  | 有効開始日。このBOM構成が有効になる開始日付。 |
+| eff_end_date | DATE |  | 有効終了日。このBOM構成が有効な終了日付。将来の設計変更管理に利用。 |
