@@ -35,17 +35,41 @@ P2Pシステムは間接材の購買業務（Purchase to Pay）を管理する�
 **概要** : 調達発注明細の情報（明細行単位の情報）を保持するブロンズ層テーブルです。発注した品目、数量、単価、納品日などを格納します。headerテーブルと1:Nのリレーションです。
 | カラム名 | 型 | 制約 | 説明 |
 | ------ | ------ | ------ | ------ |
-| line_item_id | VARCHA‌R | PK | 明細行ID（明細行の一意識別子）。 |
-| purchase_order_id | VARCHA‌R | FK | 発注ID（ヘッダーテーブルとの連携キー）。 |
-| product_id | VARCHA‌R | FK | 品目ID（製品マスタまたは部品マスタの識別子）。 |
-| product_name | VARCHA‌R |  | 品目名（スナップショット）。 |
-| quantity_ordered | DECIMAL |  | 発注数量（単位は `unit_of_measure` 参照）。 |
-| unit_of_measure | VARCHA‌R |  | 単位（例: 個, kg, m2, ケース）。 |
-| unit_price_ex_tax | DECIMAL |  | 単価（税抜、通貨単位は header の `currency` に従う）。 |
-| line_total_ex_tax | DECIMAL |  | 明細合計（税抜、= quantity_ordered × unit_price_ex_tax）。 |
+| purchase_order_id | VARCHA‌R | PK, FK | 発注ID（ヘッダーテーブルとの連携キー）。 |
+| line_number | INTEGER | PK | 明細行番号（発注内での行番号）。 |
+| material_id | VARCHA‌R |  | 資材ID（調達する部品・材料の識別子）。直接材の場合はBOMマスタの `component_product_id` がここに格納され、間接材の場合は間接材固有のIDが格納される。調達対象となる部品・材料を一意に識別。 |
+| material_name | VARCHA‌R |  | 資材名（調達する部品・材料の名称）。直接材の場合はBOMマスタの `bom_name` がここに格納され、間接材の場合は間接材の品名が格納される。 |
+| material_category | VARCHA‌R |  | 資材カテゴリ（例: Engine Parts, Electronic Components, Safety Equipment, Office Equipment, Factory Consumables）。直接材・間接材の分類。 |
+| material_type | VARCHA‌R |  | 資材タイプ（'direct' または 'indirect'）。直接材（製造に直接使用される部品・材料）か間接材（MRO資材・消耗品）かを識別。 |
+| product_id | VARCHA‌R | FK | 製品ID（完成品との連携キー）。この調達が対応する完成車（製品）のIDをリレーション用に保持。品目マスタの `product_id` を参照。受注データから製造計画を立て、どの完成車向けの部品調達かをトレース可能にする。 |
+| unspsc_code | VARCHA‌R |  | UNSPSC分類コード（国連標準製品・サービス分類コード）。 |
+| quantity | DECIMAL |  | 発注数量。 |
+| unit_price_ex_tax | DECIMAL |  | 単価（税抜）。 |
+| line_subtotal_incl_tax | DECIMAL |  | 明細小計（税込）。 |
+| line_subtotal_ex_tax | DECIMAL |  | 明細小計（税抜）。 |
+| line_tax_amount | DECIMAL |  | 明細消費税額。 |
+| line_tax_rate | DECIMAL |  | 明細税率（例: 0.1 = 10%）。 |
+| line_shipping_fee_incl_tax | DECIMAL |  | 明細送料（税込）。 |
+| line_discount_incl_tax | DECIMAL |  | 明細値引額（税込）。 |
+| line_total_incl_tax | DECIMAL |  | 明細合計（税込）。 |
+| reference_price_ex_tax | DECIMAL |  | 参考価格（税抜）。 |
+| purchase_rule | VARCHA‌R |  | 購買ルール（例: 該当無し）。 |
+| ship_date | DATE |  | 出荷日。YYYY-MM-DD 形式。 |
+| shipping_status | VARCHA‌R |  | 配送ステータス（例: delivered, in_transit, pending）。 |
+| carrier_tracking_number | VARCHA‌R |  | 配送業者追跡番号。 |
+| shipped_quantity | DECIMAL |  | 出荷済数量。 |
+| carrier_name | VARCHA‌R |  | 配送業者名（例: Amazon, ヤマト運輸, 佐川急便）。 |
+| delivery_address | VARCHA‌R |  | 配送先住所（住所、郵便番号、都道府県を含む）。 |
+| receiving_status | VARCHA‌R |  | 受領ステータス（例: received, pending, rejected）。 |
+| received_quantity | DECIMAL |  | 受領済数量（検収済み数量）。 |
 | received_date | DATE |  | 実際の納品日。リードタイム遵守率算出に使用。YYYY-MM-DD 形式。 |
-| quantity_received | DECIMAL |  | 受領済数量（検収済み数量）。 |
-| inspection_status | VARCHA‌R |  | 検品ステータス（例: pending, passed, failed）。 |
+| receiver_name | VARCHA‌R |  | 受領者名。 |
+| receiver_email | VARCHA‌R |  | 受領者メールアドレス。 |
+| cost_center | VARCHA‌R |  | コストセンターコード（原価管理用）。 |
+| project_code | VARCHA‌R |  | プロジェクトコード（プロジェクト別管理用）。 |
+| department_code | VARCHA‌R |  | 部門コード。 |
+| account_user | VARCHA‌R |  | アカウントユーザー（発注者名）。 |
+| user_email | VARCHA‌R |  | ユーザーメールアドレス（発注者のメールアドレス）。 |
 
 #### 取引先マスタテーブル
 **概要** : 取引先（サプライヤー、ディーラー、顧客等）の基本情報を保持するブロンズ層マスタテーブルです。調達先、販売先、物流業者など、すべての取引先を統合管理します。取引先区分により、サプライヤー向けの調達処理や、ディーラー向けの受注・出荷処理に利用されます。
