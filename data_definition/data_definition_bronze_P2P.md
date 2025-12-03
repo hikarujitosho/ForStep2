@@ -7,7 +7,7 @@ P2Pシステムは間接材の購買業務（Purchase to Pay）を管理する�
 ---
 
 #### 調達伝票_headerテーブル
-**概要** : 調達発注のヘッダー情報（注文全体の情報）を保持するブロンズ層テーブルです。発注日、サプライヤー、支払情報など、1つの発注単位を表します。明細行は別テーブル `調達伝票_item` に格納されます。
+**概要** : 調達発注のヘッダー情報（注文全体の情報）を保持するブロンズ層テーブルです。発注日、サプライヤー、支払情報など、1つの発注単位を表します。明細行は別テーブル `調達伝票_item` に格納されます。完成品の原材料の調達データも含まれるため原価計算にも使用される。
 | カラム名 | 型 | 制約 | 説明 |
 | ------ | ------ | ------ | ------ |
 | purchase_order_id | VARCHA‌R | PK | 調達発注ID（発注番号の一意識別子）。 |
@@ -37,11 +37,11 @@ P2Pシステムは間接材の購買業務（Purchase to Pay）を管理する�
 | ------ | ------ | ------ | ------ |
 | purchase_order_id | VARCHA‌R | PK, FK | 発注ID（ヘッダーテーブルとの連携キー）。 |
 | line_number | INTEGER | PK | 明細行番号（発注内での行番号）。 |
-| material_id | VARCHA‌R |  | 資材ID（調達する部品・材料の識別子）。直接材の場合はBOMマスタの `component_product_id` がここに格納され、間接材の場合は間接材固有のIDが格納される。調達対象となる部品・材料を一意に識別。 |
+| material_id | VARCHA‌R |  | 資材ID（調達する部品・材料の識別子）。material_typeが'direct'の場合はBOMマスタの `component_product_id` がここに格納され、material_typeが'indirect'の場合は間接材固有のIDが格納される。調達対象となる部品・材料を一意に識別。 |
 | material_name | VARCHA‌R |  | 資材名（調達する部品・材料の名称）。直接材の場合はBOMマスタの `bom_name` がここに格納され、間接材の場合は間接材の品名が格納される。 |
 | material_category | VARCHA‌R |  | 資材カテゴリ（例: Engine Parts, Electronic Components, Safety Equipment, Office Equipment, Factory Consumables）。直接材・間接材の分類。 |
-| material_type | VARCHA‌R |  | 資材タイプ（'direct' または 'indirect'）。直接材（製造に直接使用される部品・材料）か間接材（MRO資材・消耗品）かを識別。 |
-| product_id | VARCHA‌R | FK | 製品ID（完成品との連携キー）。この調達が対応する完成車（製品）のIDをリレーション用に保持。品目マスタの `product_id` を参照。受注データから製造計画を立て、どの完成車向けの部品調達かをトレース可能にする。 |
+| material_type | VARCHA‌R |  | 資材タイプ（'direct' または 'indirect'）。直接材（製造に直接使用される部品・材料）か間接材（MRO資材・消耗品）かを識別。直接材は'product_id'ごとのに足し上げた際の原価額に使用される |
+| product_id | VARCHA‌R | FK | 対応する完成品の製品ID（完成品との連携キー）。この調達が対応する完成車（製品）のIDをリレーション用に保持。品目マスタの `product_id` を参照。受注データから製造計画を立て、どの完成車向けの部品調達かをトレース可能にする。 完成車別の原価集計に使用。|
 | unspsc_code | VARCHA‌R |  | UNSPSC分類コード（国連標準製品・サービス分類コード）。 |
 | quantity | DECIMAL |  | 発注数量。 |
 | unit_price_ex_tax | DECIMAL |  | 単価（税抜）。 |

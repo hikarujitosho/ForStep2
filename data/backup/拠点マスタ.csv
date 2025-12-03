@@ -1,7 +1,0 @@
-﻿location_id,location_name,location_type,address,city,state_province,postal_code,country,contact_person,contact_phone,contact_email,is_active,valid_from,valid_to
-A1,埼玉製作所,manufacturing_plant,富田2354,大里郡寄居町,埼玉県,369-1293,JP,山田太郎,048-581-1111,t.yamada@honda.example.com,active,2013-07-01,9999-12-31
-A2,ホンダオートボディー,manufacturing_plant,川尻町1,四日市市,三重県,510-8114,JP,佐藤花子,059-364-1111,h.sato@honda.example.com,active,2018-04-01,9999-12-31
-A3,鈴鹿製作所,manufacturing_plant,平田町1907,鈴鹿市,三重県,513-8611,JP,田中一郎,059-378-1111,i.tanaka@honda.example.com,active,2010-01-01,9999-12-31
-A4,熊本製作所,manufacturing_plant,戸島西1-2087,菊池郡大津町,熊本県,869-1232,JP,鈴木次郎,096-293-1111,j.suzuki@honda.example.com,active,2010-01-01,9999-12-31
-A5,浜松製作所,manufacturing_plant,細江町気賀301,浜松市,静岡県,431-1304,JP,伊藤三郎,053-522-1111,s.ito@honda.example.com,active,2010-01-01,9999-12-31
-
