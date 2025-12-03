@@ -13,18 +13,18 @@ ERPシステムは受発注業務を管理するコアシステムです。顧�
 | order_id | VARCHA‌R | PK | 受注伝票番号（ソースシステムの伝票ID）。ブロンズ段階では文字列として保持。 |
 | order_timestamp | TIMESTAMP |  | 伝票日付／受注日時。タイムゾーン情報がある場合は原本を保持、ETLで標準化する。 |
 | location_id | VARCHA‌R |  | 拠点コード（受注を処理した拠点の識別子）。ソースシステムの拠点コードをそのまま保持。Silver層で拠点マスターとの紐付けを行う。 |
-| customer_id | VARCHA‌R |  | 取引先コード（受注元の顧客や販売店の識別子）。ソースシステムの取引先IDを保持。後続処理で取引先マスターへの参照に利用。 |
+| customer_id | VARCHA‌R |  | 取引先コード（受注元の顧客や販売店の識別子）。取引先マスタの `partner_id` を参照。価格計算時は条件マスタの`customer_id`を参照。|
 
 #### 受注伝票_itemテーブル
 **概要** : 受注伝票の明細行を格納するブロンズ層テーブルです。受注ごとの品目、数量、納期などの詳細を保持します。後続処理で品目コードの正規化や数量単位の変換を実施します。
 | カラム名 | 型 | 制約 | 説明 |
 | ------ | ------ | ------ | ------ |
-| order_id | VARCHA‌R | FK | 受注伝票番号（ヘッダー側の `order_id` を参照）。 |
+| order_id | VARCHA‌R | FK | 受注伝票番号（headerテーブルの `order_id` を参照）。 |
 | line_number | VARCHA‌R | PK | 明細番号（伝票内の行識別子）。 |
-| product_id | VARCHA‌R |  | 完成品の品目コード（ソースシステムのID）。 |
-| product_name | VARCHA‌R |  | 明細の製品名（スナップショット）。 |
+| product_id | VARCHA‌R | FK | 完成品の品目コード（ソースシステムのID）。品目マスタの`product_id` を参照。価格計算時は条件マスタの`product_id`を参照。 |
 | quantity | DECIMAL |  | 注文数量（単位はマスタに従う）。 |
 | promised_delivery_date | TIMESTAMP |  | 納入予定日または納入日時。 |
+| pricing_date | DATE | FK | 条件マスタから価格を参照する際に使用する基準日。基本的には、受注伝票_headerのorder_timestampの日付部分と一致する。valid_from < pricing_date かつ pricing_date < valid_to がtrueとなるレコードを参照する。|
 
 #### 品目マスタテーブル
 **概要** : 品目マスタ（原データ）を保持するテーブルです。品目コード、名称、単位、分類情報などを格納します。Silver 層で正規化したマスターに変換され、Gold 層のディメンションとして利用されます。
@@ -39,26 +39,26 @@ ERPシステムは受発注業務を管理するコアシステムです。顧�
 | detail_category | VARCHA‌R |  | 明細カテゴリ。 |
 | tax_classification | VARCHA‌R |  | 税分類コード。 |
 | transport_group | VARCHA‌R |  | 輸送グループ。 |
-| import_export_group | VARCHA‌R |  | 輸入/輸出グループ。 |
+| import_export_group | VARCHA‌R | FK | 国内市場向け/海外市場向けのフラグ。"export"の場合、取引先マスタでregionが"overseas"となっている取引先のみが取り扱う、"domestic"の場合、取引先マスタでregionが"domestic"となっている取引先のみが取り扱う。|
 | country_of_origin | VARCHA‌R |  | 原産地（国名またはコード）。 |
 
 #### 条件マスタテーブル
-**概要** : 価格・条件の原データを保持するマスタテーブルです。商品ごとの標準価格やディーラー別の販売価格を保存し、価格計算や請求処理の基になるデータです。ディーラーの注文実績（取引量、取引期間等）に応じた価格設定が可能で、価格改定履歴を管理するため有効期間を持つ時系列データとして保持します。
+**概要** : 価格・条件の原データを保持するマスタテーブルです。商品ごとの標準価格やディーラー別の販売価格を保存し、価格計算や請求処理の基になるデータです。ディーラーの注文実績（取引量、取引期間等）に応じた価格設定が可能で、価格改定履歴を管理するため有効期間を持つ時系列データとして保持します。価格参照する際は、customer_id, product_idの二つのキー、および、pricing_dateがvalid_from と valid_toの間にあるかどうかの判定の３つの条件で結合します。
 | カラム名 | 型 | 制約 | 説明 |
 | ------ | ------ | ------ | ------ |
-| price_condition_id | VARCHA‌R | PK | 価格条件ID（価格条件レコードの一意識別子）。product_id、customer_id、valid_fromの組み合わせで生成されることが多い。 |
-| product_id | VARCHA‌R |  | 品目コード（完成品ID）。 |
+| price_condition_id | VARCHA‌R | PK | 価格条件ID（価格条件レコードの一意識別子）。product_id、customer_id、valid_fromの組み合わせで生成される。 |
+| product_id | VARCHA‌R | FK | 品目コード（完成品ID）。 品目マスタの`product_id` を参照|
 | product_name | VARCHA‌R |  | 品目名称（表示用）。 |
-| customer_id | VARCHA‌R |  | 取引先コード（価格条件が適用されるディーラーや販売店の識別子）。特定ディーラー向けの特別価格設定や、標準価格の場合は NULL または 'DEFAULT' を格納。取引先マスタの `partner_id` を参照。 |
-| customer_name | VARCHA‌R |  | 取引先名称（スナップショット）。 |
-| list_price_ex_tax | DECIMAL |  | 税抜標準価格（単位: JPY）。メーカー希望小売価格や基準価格。 |
+| customer_id | VARCHA‌R | FK | 取引先コード（価格条件が適用されるディーラーや販売店の識別子）。特定ディーラー向けの特別価格設定や、標準価格の場合は NULL または 'DEFAULT' を格納。取引先マスタの `partner_id` を参照。 |
+| customer_name | VARCHA‌R |  | 取引先名称。取引先マスタの`partner_name` を参照 |
+| list_price_ex_tax | DECIMAL |  | 税抜標準卸売価格（単位: JPY）。割引のない取引先ははこの価格で取引する。 |
 | selling_price_ex_tax | DECIMAL |  | 税抜販売価格（単位: JPY）。実際の卸売価格。ディーラーごとの注文実績を加味して設定される。標準価格の場合は `list_price_ex_tax` と同額。 |
 | discount_rate | DECIMAL |  | 割引率（例: 5%の場合 0.05）。標準価格からの割引率。`(list_price_ex_tax - selling_price_ex_tax) / list_price_ex_tax` で計算。 |
 | price_type | VARCHA‌R |  | 価格区分（例: standard, volume_discount, dealer_special, promotional）。標準価格、ボリュームディスカウント、特約店特別価格、プロモーション価格等を区別。 |
 | minimum_order_quantity | DECIMAL |  | 最低注文数量。この価格条件を適用するための最低注文ロット。 |
 | currency | VARCHA‌R |  | 通貨コード（ISO 4217、例: 'JPY', 'USD'）。 |
-| valid_from | DATE |  | 有効開始日。この価格条件が適用開始される日付。価格改定履歴を管理するためのキー。 |
-| valid_to | DATE |  | 有効終了日。この価格条件が適用終了される日付。現在有効な価格の場合は NULL または '9999-12-31' などの最大値を格納。 |
+| valid_from | DATE | FK | 有効開始日。この価格条件が適用開始される日付。価格改定履歴を管理するためのキー。 |
+| valid_to | DATE | FK | 有効終了日。この価格条件が適用終了される日付。現在有効な価格の場合は NULL または '9999-12-31' などの最大値を格納。 |
 | remarks | VARCHA‌R |  | 備考（価格設定の理由や特記事項）。「年間1000台以上の取引実績による特別価格」等の情報を記録。 |
 
 #### BOMマスタテーブル
@@ -98,7 +98,7 @@ ERPシステムは受発注業務を管理するコアシステムです。顧�
 | currency | VARCHA‌R |  | 取引通貨（ISO 4217、例: 'JPY', 'USD', 'EUR'）。この取引先との標準取引通貨。 |
 | is_active | VARCHA‌R |  | 有効フラグ（例: active, inactive）。取引中/取引停止を示す。 |
 | account_group | VARCHA‌R |  | アカウントグループ（社内の管理区分や購買組織コード）。 |
-| region | VARCHA‌R |  | 地域区分（例: domestic, overseas, north_america, europe, asia）。国内/海外、エリア別の分類。 |
+| region | VARCHA‌R | FK | 地域区分、domestic/overseasのbinary。受注データにおいて、この項目が"domestic"の場合は品目マスタのimport_export_groupが"domestic"の商品のみ扱う。この項目が"overseas"の場合は品目マスタのimport_export_groupが"export"の商品のみ扱う。 |
 | valid_from | DATE |  | 有効開始日。取引開始日または取引先登録日。 |
 | valid_to | DATE |  | 有効終了日。取引終了日。現在取引中の場合は NULL または '9999-12-31'。 |
 
