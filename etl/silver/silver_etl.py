@@ -124,6 +124,8 @@ class SilverETL:
                 unit_price_ex_tax DECIMAL,
                 line_total_ex_tax DECIMAL,
                 expected_delivery_date DATE,
+                material_type VARCHAR,
+                material_category VARCHAR,
                 year_month VARCHAR,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 PRIMARY KEY (purchase_order_id, line_number)
@@ -402,7 +404,8 @@ class SilverETL:
             INSERT OR REPLACE INTO silver_procurement_data 
             (purchase_order_id, line_number, order_date, product_id, product_name,
              supplier_id, supplier_name, location_id, account_group, quantity,
-             unit_price_ex_tax, line_total_ex_tax, expected_delivery_date, year_month)
+             unit_price_ex_tax, line_total_ex_tax, expected_delivery_date, material_type,
+             material_category, year_month)
             SELECT 
                 h.purchase_order_id,
                 i.line_number,
@@ -417,6 +420,8 @@ class SilverETL:
                 i.unit_price_ex_tax,
                 i.line_subtotal_ex_tax as line_total_ex_tax,
                 h.expected_delivery_date,
+                i.material_type,
+                i.material_category,
                 strftime('%Y-%m', h.order_date) as year_month
             FROM bronze_p2p_purchase_header h
             JOIN bronze_p2p_purchase_item i ON h.purchase_order_id = i.purchase_order_id

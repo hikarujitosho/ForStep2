@@ -100,6 +100,8 @@ CREATE TABLE IF NOT EXISTS silver_procurement_data (
     unit_price_ex_tax DECIMAL,
     line_total_ex_tax DECIMAL,
     expected_delivery_date DATE,
+    material_type VARCHAR,
+    material_category VARCHAR,
     year_month VARCHAR,
     PRIMARY KEY (purchase_order_id, line_number),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

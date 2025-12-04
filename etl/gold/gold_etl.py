@@ -361,7 +361,7 @@ class GoldETL:
             return False
     
     def calculate_inventory_rotation_period(self) -> bool:
-        """棚卸資産回転期間の計算"""
+        """棚卸資産回転期間の計算 - 期末在庫金額 / 売上原価"""
         try:
             self.logger.info("棚卸資産回転期間計算開始...")
             
@@ -369,6 +369,7 @@ class GoldETL:
             INSERT OR REPLACE INTO gold_inventory_rotation_period 
             (year_month, avg_inventory_value, monthly_cost_of_sales, rotation_period_days)
             WITH inventory_summary AS (
+                -- 期末在庫金額（月次在庫履歴から月末時点の在庫価値）
                 SELECT 
                     inv.year_month,
                     SUM(inv.total_value) as total_inventory_value,
@@ -376,24 +377,53 @@ class GoldETL:
                 FROM silver_inventory_data inv
                 GROUP BY inv.year_month
             ),
-            sales_summary AS (
+            actual_cost_of_sales AS (
+                -- 実際の売上原価（調達伝票から直接材料費を集計）
+                SELECT 
+                    p.year_month,
+                    SUM(p.line_total_ex_tax) as direct_material_cost
+                FROM silver_procurement_data p
+                WHERE p.material_type = 'direct'
+                    AND p.line_total_ex_tax IS NOT NULL
+                GROUP BY p.year_month
+            ),
+            monthly_sales AS (
+                -- 月次売上
                 SELECT 
                     o.year_month,
-                    SUM(o.line_total_ex_tax * 0.7) as total_cost_of_sales
+                    SUM(o.line_total_ex_tax) as total_sales
                 FROM silver_order_data o
+                WHERE o.line_total_ex_tax IS NOT NULL
                 GROUP BY o.year_month
+            ),
+            cost_calculation AS (
+                -- 売上原価の計算（実際の直接材料費 + 間接費配賦）
+                SELECT 
+                    ms.year_month,
+                    ms.total_sales,
+                    COALESCE(acs.direct_material_cost, 0) as direct_cost,
+                    -- 間接材費を売上比例で配賦
+                    COALESCE(acs.direct_material_cost, 0) + 
+                    CASE 
+                        WHEN ms.total_sales > 0 AND acs.direct_material_cost > 0
+                        THEN acs.direct_material_cost * 0.2  -- 直接材に対して20%の間接費
+                        ELSE ms.total_sales * 0.7  -- フォールバック（従来の固定比率）
+                    END as total_cost_of_sales
+                FROM monthly_sales ms
+                LEFT JOIN actual_cost_of_sales acs ON ms.year_month = acs.year_month
             )
             SELECT 
                 inv.year_month,
                 inv.total_inventory_value as avg_inventory_value,
-                COALESCE(sales.total_cost_of_sales, 0) as monthly_cost_of_sales,
+                COALESCE(cost.total_cost_of_sales, 0) as monthly_cost_of_sales,
                 CASE 
-                    WHEN COALESCE(sales.total_cost_of_sales, 0) > 0 
-                    THEN ROUND(inv.total_inventory_value * 30.0 / sales.total_cost_of_sales, 1)
+                    WHEN COALESCE(cost.total_cost_of_sales, 0) > 0 
+                    THEN ROUND(inv.total_inventory_value * 30.0 / cost.total_cost_of_sales, 1)
                     ELSE NULL 
                 END as rotation_period_days
             FROM inventory_summary inv
-            LEFT JOIN sales_summary sales ON inv.year_month = sales.year_month
+            LEFT JOIN cost_calculation cost ON inv.year_month = cost.year_month
+            WHERE inv.total_inventory_value > 0
             ORDER BY inv.year_month
             """
             
@@ -498,7 +528,7 @@ class GoldETL:
             return False
     
     def calculate_monthly_product_inventory_rotation(self) -> bool:
-        """月次商品別棚卸資産回転期間計算"""
+        """月次商品別棚卸資産回転期間計算 - 商品別期末在庫金額 / 商品別売上原価"""
         try:
             self.logger.info("月次商品別棚卸資産回転期間計算開始...")
             
@@ -506,6 +536,7 @@ class GoldETL:
             INSERT OR REPLACE INTO gold_monthly_product_inventory_rotation 
             (year_month, product_id, product_name, avg_inventory_value, monthly_cost_of_sales, rotation_period_days)
             WITH inventory_data AS (
+                -- 商品別期末在庫金額
                 SELECT 
                     inv.year_month,
                     inv.product_id,
@@ -513,29 +544,62 @@ class GoldETL:
                     AVG(inv.total_value) as avg_inventory_value
                 FROM silver_inventory_data inv
                 JOIN silver_item_master i ON inv.product_id = i.product_id
+                WHERE inv.total_value IS NOT NULL
                 GROUP BY inv.year_month, inv.product_id, i.product_name
             ),
-            sales_data AS (
+            product_procurement_cost AS (
+                -- 商品別直接材料費
+                SELECT 
+                    p.year_month,
+                    p.product_id,
+                    SUM(p.line_total_ex_tax) as direct_material_cost
+                FROM silver_procurement_data p
+                WHERE p.material_type = 'direct'
+                    AND p.line_total_ex_tax IS NOT NULL
+                GROUP BY p.year_month, p.product_id
+            ),
+            product_sales AS (
+                -- 商品別売上
                 SELECT 
                     o.year_month,
                     o.product_id,
-                    SUM(o.line_total_ex_tax * 0.7) as monthly_cost_of_sales
+                    SUM(o.line_total_ex_tax) as total_sales
                 FROM silver_order_data o
+                WHERE o.line_total_ex_tax IS NOT NULL
                 GROUP BY o.year_month, o.product_id
+            ),
+            product_cost_calculation AS (
+                -- 商品別売上原価の計算
+                SELECT 
+                    ps.year_month,
+                    ps.product_id,
+                    ps.total_sales,
+                    COALESCE(ppc.direct_material_cost, 0) as direct_cost,
+                    -- 商品別売上原価 = 直接材料費 + 間接費配賦
+                    CASE 
+                        WHEN ppc.direct_material_cost > 0
+                        THEN ppc.direct_material_cost * 1.2  -- 直接材に20%の間接費を上乗せ
+                        ELSE ps.total_sales * 0.7  -- フォールバック（従来の固定比率）
+                    END as monthly_cost_of_sales
+                FROM product_sales ps
+                LEFT JOIN product_procurement_cost ppc 
+                    ON ps.year_month = ppc.year_month AND ps.product_id = ppc.product_id
             )
             SELECT 
                 inv.year_month,
                 inv.product_id,
                 inv.product_name,
                 inv.avg_inventory_value,
-                COALESCE(sales.monthly_cost_of_sales, 0) as monthly_cost_of_sales,
+                COALESCE(cost.monthly_cost_of_sales, 0) as monthly_cost_of_sales,
                 CASE 
-                    WHEN COALESCE(sales.monthly_cost_of_sales, 0) > 0 
-                    THEN ROUND(inv.avg_inventory_value * 30.0 / sales.monthly_cost_of_sales, 1)
+                    WHEN COALESCE(cost.monthly_cost_of_sales, 0) > 0 AND inv.avg_inventory_value > 0
+                    THEN ROUND(inv.avg_inventory_value * 30.0 / cost.monthly_cost_of_sales, 1)
                     ELSE NULL 
                 END as rotation_period_days
             FROM inventory_data inv
-            LEFT JOIN sales_data sales ON inv.year_month = sales.year_month AND inv.product_id = sales.product_id
+            LEFT JOIN product_cost_calculation cost 
+                ON inv.year_month = cost.year_month AND inv.product_id = cost.product_id
+            WHERE inv.avg_inventory_value > 0
             ORDER BY inv.year_month, inv.product_id
             """
             
@@ -549,56 +613,129 @@ class GoldETL:
             return False
     
     def calculate_monthly_product_ebitda(self) -> bool:
-        """月次商品別EBITDA計算"""
+        """完成品別月次EBITDA計算 - 売上・売上原価・販売管理費の明確な分離"""
         try:
-            self.logger.info("月次商品別EBITDA計算開始...")
+            self.logger.info("完成品別月次EBITDA計算開始...")
             
             sql = """
             INSERT OR REPLACE INTO gold_monthly_product_ebitda 
             (year_month, product_id, product_name, revenue, gross_profit, ebitda, ebitda_margin)
             WITH product_sales AS (
+                -- 完成品別売上の計算（受注伝票から）
                 SELECT 
                     o.year_month,
                     o.product_id,
                     i.product_name,
-                    SUM(o.line_total_ex_tax) as revenue,
-                    SUM(o.line_total_ex_tax * 0.3) as gross_profit
+                    SUM(o.line_total_ex_tax) as revenue
                 FROM silver_order_data o
                 JOIN silver_item_master i ON o.product_id = i.product_id
+                WHERE o.line_total_ex_tax IS NOT NULL
                 GROUP BY o.year_month, o.product_id, i.product_name
             ),
-            indirect_costs AS (
+            direct_material_cost AS (
+                -- 完成品別直接材料費
                 SELECT 
                     p.year_month,
                     p.product_id,
-                    SUM(p.line_total_ex_tax * 0.05) as monthly_indirect_cost
+                    SUM(p.line_total_ex_tax) as direct_cost
                 FROM silver_procurement_data p
+                WHERE p.material_type = 'direct'
+                    AND p.product_id IS NOT NULL
+                    AND p.line_total_ex_tax IS NOT NULL
                 GROUP BY p.year_month, p.product_id
+            ),
+            monthly_totals AS (
+                -- 月次合計の計算（配賦用）
+                SELECT 
+                    s.year_month,
+                    SUM(s.revenue) as total_monthly_revenue,
+                    -- 間接材費の月次合計
+                    COALESCE(SUM(indirect.indirect_cost), 0) as total_indirect_cost,
+                    -- 人件費の月次合計
+                    COALESCE(SUM(payroll.total_payroll), 0) as total_payroll_cost
+                FROM product_sales s
+                LEFT JOIN (
+                    SELECT 
+                        year_month,
+                        SUM(line_total_ex_tax) as indirect_cost
+                    FROM silver_procurement_data
+                    WHERE material_type = 'indirect'
+                        AND line_total_ex_tax IS NOT NULL
+                    GROUP BY year_month
+                ) indirect ON s.year_month = indirect.year_month
+                LEFT JOIN (
+                    SELECT 
+                        year_month,
+                        SUM(total_compensation) as total_payroll
+                    FROM silver_payroll_data
+                    WHERE total_compensation IS NOT NULL
+                    GROUP BY year_month
+                ) payroll ON s.year_month = payroll.year_month
+                GROUP BY s.year_month, indirect.indirect_cost, payroll.total_payroll
+            ),
+            allocated_costs AS (
+                -- 完成品別原価・販管費の配賦計算
+                SELECT 
+                    ps.year_month,
+                    ps.product_id,
+                    ps.product_name,
+                    ps.revenue,
+                    -- 直接材料費
+                    COALESCE(dmc.direct_cost, 0) as direct_cost,
+                    -- 間接材費の売上比例配賦（売上原価の一部）
+                    CASE 
+                        WHEN mt.total_monthly_revenue > 0 
+                        THEN ROUND(mt.total_indirect_cost * ps.revenue / mt.total_monthly_revenue, 2)
+                        ELSE 0
+                    END as allocated_indirect_cost,
+                    -- 人件費の売上比例配賦（販売管理費）
+                    CASE 
+                        WHEN mt.total_monthly_revenue > 0 
+                        THEN ROUND(mt.total_payroll_cost * ps.revenue / mt.total_monthly_revenue, 2)
+                        ELSE 0
+                    END as allocated_payroll_cost
+                FROM product_sales ps
+                LEFT JOIN direct_material_cost dmc 
+                    ON ps.year_month = dmc.year_month 
+                    AND ps.product_id = dmc.product_id
+                JOIN monthly_totals mt ON ps.year_month = mt.year_month
+            ),
+            ebitda_calculation AS (
+                SELECT 
+                    ac.*,
+                    -- 完成品別売上原価 = 直接材 + 間接材（配賦）
+                    ac.direct_cost + ac.allocated_indirect_cost as total_cogs,
+                    -- 粗利益 = 売上 - 売上原価
+                    ac.revenue - (ac.direct_cost + ac.allocated_indirect_cost) as gross_profit,
+                    -- EBITDA = 売上 - 売上原価 - 販売管理費
+                    ac.revenue - (ac.direct_cost + ac.allocated_indirect_cost) - ac.allocated_payroll_cost as ebitda
+                FROM allocated_costs ac
             )
             SELECT 
-                sales.year_month,
-                sales.product_id,
-                sales.product_name,
-                sales.revenue,
-                sales.gross_profit,
-                sales.gross_profit - COALESCE(costs.monthly_indirect_cost, 0) as ebitda,
+                ec.year_month,
+                ec.product_id,
+                ec.product_name,
+                ec.revenue,
+                ec.gross_profit,
+                ec.ebitda,
+                -- EBITDAマージンの計算
                 CASE 
-                    WHEN sales.revenue > 0 
-                    THEN ROUND((sales.gross_profit - COALESCE(costs.monthly_indirect_cost, 0)) * 100.0 / sales.revenue, 2)
+                    WHEN ec.revenue > 0 
+                    THEN ROUND(ec.ebitda * 100.0 / ec.revenue, 2)
                     ELSE 0 
                 END as ebitda_margin
-            FROM product_sales sales
-            LEFT JOIN indirect_costs costs ON sales.year_month = costs.year_month AND sales.product_id = costs.product_id
-            ORDER BY sales.year_month, sales.product_id
+            FROM ebitda_calculation ec
+            WHERE ec.revenue > 0
+            ORDER BY ec.year_month, ec.product_id
             """
             
             self.db_manager.execute_sql(sql)
             row_count = self.db_manager.get_row_count("gold_monthly_product_ebitda")
-            self.logger.info(f"月次商品別EBITDA計算完了: {row_count} rows")
+            self.logger.info(f"完成品別月次EBITDA計算完了: {row_count} rows")
             return True
             
         except Exception as e:
-            self.logger.error(f"月次商品別EBITDA計算エラー: {e}")
+            self.logger.error(f"完成品別月次EBITDA計算エラー: {e}")
             return False
     
     def calculate_monthly_delivery_compliance_rate(self) -> bool:
