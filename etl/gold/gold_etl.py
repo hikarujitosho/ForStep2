@@ -613,7 +613,7 @@ class GoldETL:
             return False
     
     def calculate_monthly_product_ebitda(self) -> bool:
-        """完成品別月次EBITDA計算 - 売上・売上原価・販売管理費の明確な分離"""
+        """完成品別月次EBITDA計算 - 提示されたロジックに準拠（売上原価=直接材のみ、販管費=間接材+給与）"""
         try:
             self.logger.info("完成品別月次EBITDA計算開始...")
             
@@ -633,7 +633,7 @@ class GoldETL:
                 GROUP BY o.year_month, o.product_id, i.product_name
             ),
             direct_material_cost AS (
-                -- 完成品別直接材料費
+                -- 完成品別直接材料費（売上原価）
                 SELECT 
                     p.year_month,
                     p.product_id,
@@ -645,13 +645,13 @@ class GoldETL:
                 GROUP BY p.year_month, p.product_id
             ),
             monthly_totals AS (
-                -- 月次合計の計算（配賦用）
+                -- 月次合計の計算（販管費配賦用）
                 SELECT 
                     s.year_month,
                     SUM(s.revenue) as total_monthly_revenue,
-                    -- 間接材費の月次合計
+                    -- 間接材費の月次合計（販管費）
                     COALESCE(SUM(indirect.indirect_cost), 0) as total_indirect_cost,
-                    -- 人件費の月次合計
+                    -- 人件費の月次合計（販管費）
                     COALESCE(SUM(payroll.total_payroll), 0) as total_payroll_cost
                 FROM product_sales s
                 LEFT JOIN (
@@ -674,21 +674,20 @@ class GoldETL:
                 GROUP BY s.year_month, indirect.indirect_cost, payroll.total_payroll
             ),
             allocated_costs AS (
-                -- 完成品別原価・販管費の配賦計算
+                -- 完成品別コスト配賦計算
                 SELECT 
                     ps.year_month,
                     ps.product_id,
                     ps.product_name,
                     ps.revenue,
-                    -- 直接材料費
-                    COALESCE(dmc.direct_cost, 0) as direct_cost,
-                    -- 間接材費の売上比例配賦（売上原価の一部）
+                    -- 売上原価 = 直接材料費のみ
+                    COALESCE(dmc.direct_cost, 0) as cogs,
+                    -- 販管費 = 間接材費（配賦）+ 人件費（配賦）
                     CASE 
                         WHEN mt.total_monthly_revenue > 0 
                         THEN ROUND(mt.total_indirect_cost * ps.revenue / mt.total_monthly_revenue, 2)
                         ELSE 0
                     END as allocated_indirect_cost,
-                    -- 人件費の売上比例配賦（販売管理費）
                     CASE 
                         WHEN mt.total_monthly_revenue > 0 
                         THEN ROUND(mt.total_payroll_cost * ps.revenue / mt.total_monthly_revenue, 2)
@@ -703,12 +702,12 @@ class GoldETL:
             ebitda_calculation AS (
                 SELECT 
                     ac.*,
-                    -- 完成品別売上原価 = 直接材 + 間接材（配賦）
-                    ac.direct_cost + ac.allocated_indirect_cost as total_cogs,
-                    -- 粗利益 = 売上 - 売上原価
-                    ac.revenue - (ac.direct_cost + ac.allocated_indirect_cost) as gross_profit,
+                    -- 粗利益 = 売上 - 売上原価（直接材のみ）
+                    ac.revenue - ac.cogs as gross_profit,
+                    -- 販売管理費 = 間接材（配賦）+ 人件費（配賦）
+                    ac.allocated_indirect_cost + ac.allocated_payroll_cost as total_sg_expense,
                     -- EBITDA = 売上 - 売上原価 - 販売管理費
-                    ac.revenue - (ac.direct_cost + ac.allocated_indirect_cost) - ac.allocated_payroll_cost as ebitda
+                    ac.revenue - ac.cogs - (ac.allocated_indirect_cost + ac.allocated_payroll_cost) as ebitda
                 FROM allocated_costs ac
             )
             SELECT 

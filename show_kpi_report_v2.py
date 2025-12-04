@@ -193,7 +193,6 @@ def show_kpi_report():
                        ROUND(ebitda/1000000, 2) AS 'EBITDA(百万円)'
                 FROM gold_monthly_product_ebitda 
                 WHERE year_month = (SELECT MAX(year_month) FROM gold_monthly_product_ebitda)
-                AND ebitda > 0
                 ORDER BY ebitda_margin DESC
                 LIMIT 5
             """)
