@@ -1,4 +1,4 @@
-shipment_id,order_id,line_number,product_id,quantity,carrier_name,transportation_mode,planned_ship_date,actual_ship_timestamp,expected_ship_date,actual_arrival_timestamp,delivery_status
+﻿shipment_id,order_id,line_number,product_id,quantity,carrier_name,transportation_mode,planned_ship_date,actual_ship_timestamp,expected_ship_date,actual_arrival_timestamp,delivery_status
 YML-road-20220118-001,ORD-000001,1,FIT-GR3,5,ヤマトロジスティクス,road,2022-01-18,2022-01-19 09:25:18,2022-01-18,2022-01-23 03:02:18,delivered
 YML-road-20220118-001,ORD-000001,2,FRD-GB5,5,ヤマトロジスティクス,road,2022-01-18,2022-01-19 09:25:18,2022-01-18,2022-01-23 03:02:18,delivered
 NPL-air-20220106-001,ORD-000002,1,NOE-JG4,1,日本通運,air,2022-01-06,2022-01-07 03:56:00,2022-01-06,2022-01-13 13:11:00,delayed
