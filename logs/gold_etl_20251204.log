@@ -731,3 +731,303 @@
 2    2022-03      562143994   139817161           24.87  2025-12-04 08:37:40
 2025-12-04 17:37:41,185 - gold_etl - INFO - KPI結果検証完了
 2025-12-04 17:37:41,185 - gold_etl - INFO - === ゴールド層ETL完了 ===
+2025-12-04 18:09:17,838 - gold_etl - INFO - === ゴールド層ETL開始 ===
+2025-12-04 18:09:17,839 - gold_etl - INFO - ゴールド層スキーマを初期化中...
+2025-12-04 18:09:17,853 - gold_etl - INFO - ゴールド層スキーマ初期化完了
+2025-12-04 18:09:17,853 - gold_etl - INFO - KPI計算開始...
+2025-12-04 18:09:17,853 - gold_etl - INFO - 月次商品別粗利率計算開始...
+2025-12-04 18:09:17,977 - gold_etl - INFO - 月次商品別粗利率計算完了: 540 rows
+2025-12-04 18:09:17,977 - gold_etl - INFO - 月次EV販売率計算開始...
+2025-12-04 18:09:17,980 - gold_etl - INFO - 月次EV販売率計算完了: 48 rows
+2025-12-04 18:09:17,980 - gold_etl - INFO - 月次エリア別EV販売率計算開始...
+2025-12-04 18:09:17,986 - gold_etl - INFO - 月次エリア別EV販売率計算完了: 238 rows
+2025-12-04 18:09:17,986 - gold_etl - INFO - 月次先進安全装置適用率計算開始...
+2025-12-04 18:09:17,989 - gold_etl - INFO - 月次先進安全装置適用率計算完了: 48 rows
+2025-12-04 18:09:17,989 - gold_etl - INFO - 月次エリア別先進安全装置適用率計算開始...
+2025-12-04 18:09:17,994 - gold_etl - INFO - 月次エリア別先進安全装置適用率計算完了: 238 rows
+2025-12-04 18:09:17,994 - gold_etl - INFO - 棚卸資産回転期間計算開始...
+2025-12-04 18:09:17,999 - gold_etl - INFO - 棚卸資産回転期間計算完了: 0 rows
+2025-12-04 18:09:17,999 - gold_etl - INFO - 月次EBITDA計算開始...
+2025-12-04 18:09:18,154 - gold_etl - INFO - 月次EBITDA計算完了: 48 rows
+2025-12-04 18:09:18,154 - gold_etl - INFO - 緊急輸送費率計算開始...
+2025-12-04 18:09:18,157 - gold_etl - INFO - 緊急輸送費率計算完了: 48 rows
+2025-12-04 18:09:18,157 - gold_etl - INFO - 月次商品別棚卸資産回転期間計算開始...
+2025-12-04 18:09:18,159 - gold_etl - INFO - 月次商品別棚卸資産回転期間計算完了: 0 rows
+2025-12-04 18:09:18,159 - gold_etl - INFO - 完成品別月次EBITDA計算開始...
+2025-12-04 18:09:18,195 - gold_etl - INFO - 完成品別月次EBITDA計算完了: 540 rows
+2025-12-04 18:09:18,195 - gold_etl - INFO - 月次納期遵守率計算開始...
+2025-12-04 18:09:18,204 - gold_etl - INFO - 月次納期遵守率計算完了: 48 rows
+2025-12-04 18:09:18,204 - gold_etl - INFO - 月次仕入先リードタイム遵守率計算開始...
+2025-12-04 18:09:18,442 - gold_etl - INFO - 月次仕入先リードタイム遵守率計算完了: 805 rows
+2025-12-04 18:09:18,442 - gold_etl - INFO - KPI計算完了: 12/12
+2025-12-04 18:09:18,442 - gold_etl - INFO - KPI結果検証開始...
+2025-12-04 18:09:18,443 - gold_etl - INFO - gold_monthly_product_gross_margin: 540 rows
+2025-12-04 18:09:18,444 - gold_etl - INFO - gold_monthly_ev_sales_share: 48 rows
+2025-12-04 18:09:18,445 - gold_etl - INFO - gold_monthly_area_ev_sales_share: 238 rows
+2025-12-04 18:09:18,447 - gold_etl - INFO - gold_monthly_safety_equipment_adoption: 48 rows
+2025-12-04 18:09:18,448 - gold_etl - INFO - gold_monthly_area_safety_equipment_adoption: 238 rows
+2025-12-04 18:09:18,449 - gold_etl - INFO - gold_inventory_rotation_period: 0 rows
+2025-12-04 18:09:18,451 - gold_etl - INFO - gold_monthly_ebitda: 48 rows
+2025-12-04 18:09:18,452 - gold_etl - INFO - gold_emergency_transportation_cost_share: 48 rows
+2025-12-04 18:09:18,453 - gold_etl - INFO - gold_monthly_product_inventory_rotation: 0 rows
+2025-12-04 18:09:18,460 - gold_etl - INFO - gold_monthly_product_ebitda: 540 rows
+2025-12-04 18:09:18,461 - gold_etl - INFO - gold_monthly_delivery_compliance_rate: 48 rows
+2025-12-04 18:09:18,462 - gold_etl - INFO - gold_monthly_supplier_lead_time_compliance: 805 rows
+2025-12-04 18:09:18,462 - gold_etl - INFO - 計算完了KPI数: 10/12
+2025-12-04 18:09:18,469 - gold_etl - INFO - EV販売率サンプル:
+  year_month  total_revenue  ev_revenue  ev_sales_share           created_at
+0    2022-01      440849278    95966308           21.77  2025-12-04 09:09:17
+1    2022-02      561595810   209347783           37.28  2025-12-04 09:09:17
+2    2022-03      562143994   139817161           24.87  2025-12-04 09:09:17
+2025-12-04 18:09:18,469 - gold_etl - INFO - KPI結果検証完了
+2025-12-04 18:09:18,469 - gold_etl - INFO - === ゴールド層ETL完了 ===
+2025-12-04 18:14:47,013 - gold_etl - INFO - === ゴールド層ETL開始 ===
+2025-12-04 18:14:47,014 - gold_etl - INFO - ゴールド層スキーマを初期化中...
+2025-12-04 18:14:47,024 - gold_etl - INFO - ゴールド層スキーマ初期化完了
+2025-12-04 18:14:47,024 - gold_etl - INFO - KPI計算開始...
+2025-12-04 18:14:47,024 - gold_etl - INFO - 月次商品別粗利率計算開始...
+2025-12-04 18:14:47,144 - gold_etl - INFO - 月次商品別粗利率計算完了: 540 rows
+2025-12-04 18:14:47,144 - gold_etl - INFO - 月次EV販売率計算開始...
+2025-12-04 18:14:47,148 - gold_etl - INFO - 月次EV販売率計算完了: 48 rows
+2025-12-04 18:14:47,148 - gold_etl - INFO - 月次エリア別EV販売率計算開始...
+2025-12-04 18:14:47,153 - gold_etl - INFO - 月次エリア別EV販売率計算完了: 238 rows
+2025-12-04 18:14:47,153 - gold_etl - INFO - 月次先進安全装置適用率計算開始...
+2025-12-04 18:14:47,156 - gold_etl - INFO - 月次先進安全装置適用率計算完了: 48 rows
+2025-12-04 18:14:47,156 - gold_etl - INFO - 月次エリア別先進安全装置適用率計算開始...
+2025-12-04 18:14:47,162 - gold_etl - INFO - 月次エリア別先進安全装置適用率計算完了: 238 rows
+2025-12-04 18:14:47,162 - gold_etl - INFO - 棚卸資産回転期間計算開始...
+2025-12-04 18:14:47,167 - gold_etl - INFO - 棚卸資産回転期間計算完了: 47 rows
+2025-12-04 18:14:47,167 - gold_etl - INFO - 月次EBITDA計算開始...
+2025-12-04 18:14:47,321 - gold_etl - INFO - 月次EBITDA計算完了: 48 rows
+2025-12-04 18:14:47,321 - gold_etl - INFO - 緊急輸送費率計算開始...
+2025-12-04 18:14:47,324 - gold_etl - INFO - 緊急輸送費率計算完了: 48 rows
+2025-12-04 18:14:47,324 - gold_etl - INFO - 月次商品別棚卸資産回転期間計算開始...
+2025-12-04 18:14:47,333 - gold_etl - INFO - 月次商品別棚卸資産回転期間計算完了: 510 rows
+2025-12-04 18:14:47,333 - gold_etl - INFO - 完成品別月次EBITDA計算開始...
+2025-12-04 18:14:47,368 - gold_etl - INFO - 完成品別月次EBITDA計算完了: 540 rows
+2025-12-04 18:14:47,368 - gold_etl - INFO - 月次納期遵守率計算開始...
+2025-12-04 18:14:47,377 - gold_etl - INFO - 月次納期遵守率計算完了: 48 rows
+2025-12-04 18:14:47,377 - gold_etl - INFO - 月次仕入先リードタイム遵守率計算開始...
+2025-12-04 18:14:47,614 - gold_etl - INFO - 月次仕入先リードタイム遵守率計算完了: 806 rows
+2025-12-04 18:14:47,614 - gold_etl - INFO - KPI計算完了: 12/12
+2025-12-04 18:14:47,614 - gold_etl - INFO - KPI結果検証開始...
+2025-12-04 18:14:47,615 - gold_etl - INFO - gold_monthly_product_gross_margin: 540 rows
+2025-12-04 18:14:47,616 - gold_etl - INFO - gold_monthly_ev_sales_share: 48 rows
+2025-12-04 18:14:47,618 - gold_etl - INFO - gold_monthly_area_ev_sales_share: 238 rows
+2025-12-04 18:14:47,619 - gold_etl - INFO - gold_monthly_safety_equipment_adoption: 48 rows
+2025-12-04 18:14:47,620 - gold_etl - INFO - gold_monthly_area_safety_equipment_adoption: 238 rows
+2025-12-04 18:14:47,621 - gold_etl - INFO - gold_inventory_rotation_period: 47 rows
+2025-12-04 18:14:47,622 - gold_etl - INFO - gold_monthly_ebitda: 48 rows
+2025-12-04 18:14:47,624 - gold_etl - INFO - gold_emergency_transportation_cost_share: 48 rows
+2025-12-04 18:14:47,625 - gold_etl - INFO - gold_monthly_product_inventory_rotation: 510 rows
+2025-12-04 18:14:47,632 - gold_etl - INFO - gold_monthly_product_ebitda: 540 rows
+2025-12-04 18:14:47,633 - gold_etl - INFO - gold_monthly_delivery_compliance_rate: 48 rows
+2025-12-04 18:14:47,634 - gold_etl - INFO - gold_monthly_supplier_lead_time_compliance: 806 rows
+2025-12-04 18:14:47,634 - gold_etl - INFO - 計算完了KPI数: 12/12
+2025-12-04 18:14:47,637 - gold_etl - INFO - EV販売率サンプル:
+  year_month  total_revenue  ev_revenue  ev_sales_share           created_at
+0    2022-01      440849278    95966308           21.77  2025-12-04 09:14:47
+1    2022-02      561595810   209347783           37.28  2025-12-04 09:14:47
+2    2022-03      562143994   139817161           24.87  2025-12-04 09:14:47
+2025-12-04 18:14:47,637 - gold_etl - INFO - KPI結果検証完了
+2025-12-04 18:14:47,637 - gold_etl - INFO - === ゴールド層ETL完了 ===
+2025-12-04 18:51:45,609 - gold_etl - INFO - === ゴールド層ETL開始 ===
+2025-12-04 18:51:45,610 - gold_etl - INFO - ゴールド層スキーマを初期化中...
+2025-12-04 18:51:45,621 - gold_etl - INFO - ゴールド層スキーマ初期化完了
+2025-12-04 18:51:45,621 - gold_etl - INFO - KPI計算開始...
+2025-12-04 18:51:45,621 - gold_etl - INFO - 月次商品別粗利率計算開始...
+2025-12-04 18:51:45,739 - gold_etl - INFO - 月次商品別粗利率計算完了: 540 rows
+2025-12-04 18:51:45,739 - gold_etl - INFO - 月次EV販売率計算開始...
+2025-12-04 18:51:45,742 - gold_etl - INFO - 月次EV販売率計算完了: 48 rows
+2025-12-04 18:51:45,742 - gold_etl - INFO - 月次エリア別EV販売率計算開始...
+2025-12-04 18:51:45,748 - gold_etl - INFO - 月次エリア別EV販売率計算完了: 238 rows
+2025-12-04 18:51:45,748 - gold_etl - INFO - 月次先進安全装置適用率計算開始...
+2025-12-04 18:51:45,751 - gold_etl - INFO - 月次先進安全装置適用率計算完了: 48 rows
+2025-12-04 18:51:45,751 - gold_etl - INFO - 月次エリア別先進安全装置適用率計算開始...
+2025-12-04 18:51:45,757 - gold_etl - INFO - 月次エリア別先進安全装置適用率計算完了: 238 rows
+2025-12-04 18:51:45,757 - gold_etl - INFO - 棚卸資産回転期間計算開始...
+2025-12-04 18:51:45,761 - gold_etl - INFO - 棚卸資産回転期間計算完了: 47 rows
+2025-12-04 18:51:45,761 - gold_etl - INFO - 月次EBITDA計算開始...
+2025-12-04 18:51:45,916 - gold_etl - INFO - 月次EBITDA計算完了: 48 rows
+2025-12-04 18:51:45,917 - gold_etl - INFO - 緊急輸送費率計算開始...
+2025-12-04 18:51:45,919 - gold_etl - INFO - 緊急輸送費率計算完了: 48 rows
+2025-12-04 18:51:45,919 - gold_etl - INFO - 月次商品別棚卸資産回転期間計算開始...
+2025-12-04 18:51:45,925 - gold_etl - INFO - 月次商品別棚卸資産回転期間計算完了: 561 rows
+2025-12-04 18:51:45,926 - gold_etl - INFO - 完成品別月次EBITDA計算開始...
+2025-12-04 18:51:45,962 - gold_etl - INFO - 完成品別月次EBITDA計算完了: 540 rows
+2025-12-04 18:51:45,962 - gold_etl - INFO - 月次納期遵守率計算開始...
+2025-12-04 18:51:45,971 - gold_etl - INFO - 月次納期遵守率計算完了: 48 rows
+2025-12-04 18:51:45,972 - gold_etl - INFO - 月次仕入先リードタイム遵守率計算開始...
+2025-12-04 18:51:46,208 - gold_etl - INFO - 月次仕入先リードタイム遵守率計算完了: 807 rows
+2025-12-04 18:51:46,208 - gold_etl - INFO - KPI計算完了: 12/12
+2025-12-04 18:51:46,208 - gold_etl - INFO - KPI結果検証開始...
+2025-12-04 18:51:46,209 - gold_etl - INFO - gold_monthly_product_gross_margin: 540 rows
+2025-12-04 18:51:46,210 - gold_etl - INFO - gold_monthly_ev_sales_share: 48 rows
+2025-12-04 18:51:46,211 - gold_etl - INFO - gold_monthly_area_ev_sales_share: 238 rows
+2025-12-04 18:51:46,213 - gold_etl - INFO - gold_monthly_safety_equipment_adoption: 48 rows
+2025-12-04 18:51:46,214 - gold_etl - INFO - gold_monthly_area_safety_equipment_adoption: 238 rows
+2025-12-04 18:51:46,215 - gold_etl - INFO - gold_inventory_rotation_period: 47 rows
+2025-12-04 18:51:46,216 - gold_etl - INFO - gold_monthly_ebitda: 48 rows
+2025-12-04 18:51:46,217 - gold_etl - INFO - gold_emergency_transportation_cost_share: 48 rows
+2025-12-04 18:51:46,219 - gold_etl - INFO - gold_monthly_product_inventory_rotation: 561 rows
+2025-12-04 18:51:46,225 - gold_etl - INFO - gold_monthly_product_ebitda: 540 rows
+2025-12-04 18:51:46,226 - gold_etl - INFO - gold_monthly_delivery_compliance_rate: 48 rows
+2025-12-04 18:51:46,227 - gold_etl - INFO - gold_monthly_supplier_lead_time_compliance: 807 rows
+2025-12-04 18:51:46,227 - gold_etl - INFO - 計算完了KPI数: 12/12
+2025-12-04 18:51:46,231 - gold_etl - INFO - EV販売率サンプル:
+  year_month  total_revenue  ev_revenue  ev_sales_share           created_at
+0    2022-01      440849278    95966308           21.77  2025-12-04 09:51:45
+1    2022-02      561595810   209347783           37.28  2025-12-04 09:51:45
+2    2022-03      562143994   139817161           24.87  2025-12-04 09:51:45
+2025-12-04 18:51:46,231 - gold_etl - INFO - KPI結果検証完了
+2025-12-04 18:51:46,231 - gold_etl - INFO - === ゴールド層ETL完了 ===
+2025-12-04 19:00:56,034 - gold_etl - INFO - === ゴールド層ETL開始 ===
+2025-12-04 19:00:56,035 - gold_etl - INFO - ゴールド層スキーマを初期化中...
+2025-12-04 19:00:56,044 - gold_etl - INFO - ゴールド層スキーマ初期化完了
+2025-12-04 19:00:56,044 - gold_etl - INFO - KPI計算開始...
+2025-12-04 19:00:56,044 - gold_etl - INFO - 月次商品別粗利率計算開始...
+2025-12-04 19:00:56,161 - gold_etl - INFO - 月次商品別粗利率計算完了: 540 rows
+2025-12-04 19:00:56,161 - gold_etl - INFO - 月次EV販売率計算開始...
+2025-12-04 19:00:56,164 - gold_etl - INFO - 月次EV販売率計算完了: 48 rows
+2025-12-04 19:00:56,164 - gold_etl - INFO - 月次エリア別EV販売率計算開始...
+2025-12-04 19:00:56,170 - gold_etl - INFO - 月次エリア別EV販売率計算完了: 238 rows
+2025-12-04 19:00:56,170 - gold_etl - INFO - 月次先進安全装置適用率計算開始...
+2025-12-04 19:00:56,173 - gold_etl - INFO - 月次先進安全装置適用率計算完了: 48 rows
+2025-12-04 19:00:56,173 - gold_etl - INFO - 月次エリア別先進安全装置適用率計算開始...
+2025-12-04 19:00:56,179 - gold_etl - INFO - 月次エリア別先進安全装置適用率計算完了: 238 rows
+2025-12-04 19:00:56,185 - gold_etl - INFO - 棚卸資産回転期間計算開始...
+2025-12-04 19:00:56,190 - gold_etl - INFO - 棚卸資産回転期間計算完了: 47 rows
+2025-12-04 19:00:56,190 - gold_etl - INFO - 月次EBITDA計算開始...
+2025-12-04 19:00:56,342 - gold_etl - INFO - 月次EBITDA計算完了: 48 rows
+2025-12-04 19:00:56,342 - gold_etl - INFO - 緊急輸送費率計算開始...
+2025-12-04 19:00:56,345 - gold_etl - INFO - 緊急輸送費率計算完了: 48 rows
+2025-12-04 19:00:56,345 - gold_etl - INFO - 月次商品別棚卸資産回転期間計算開始...
+2025-12-04 19:00:56,352 - gold_etl - INFO - 月次商品別棚卸資産回転期間計算完了: 561 rows
+2025-12-04 19:00:56,352 - gold_etl - INFO - 完成品別月次EBITDA計算開始...
+2025-12-04 19:00:56,386 - gold_etl - INFO - 完成品別月次EBITDA計算完了: 540 rows
+2025-12-04 19:00:56,386 - gold_etl - INFO - 月次納期遵守率計算開始...
+2025-12-04 19:00:56,395 - gold_etl - INFO - 月次納期遵守率計算完了: 48 rows
+2025-12-04 19:00:56,395 - gold_etl - INFO - 月次仕入先リードタイム遵守率計算開始...
+2025-12-04 19:00:56,629 - gold_etl - INFO - 月次仕入先リードタイム遵守率計算完了: 808 rows
+2025-12-04 19:00:56,629 - gold_etl - INFO - KPI計算完了: 12/12
+2025-12-04 19:00:56,629 - gold_etl - INFO - KPI結果検証開始...
+2025-12-04 19:00:56,630 - gold_etl - INFO - gold_monthly_product_gross_margin: 540 rows
+2025-12-04 19:00:56,631 - gold_etl - INFO - gold_monthly_ev_sales_share: 48 rows
+2025-12-04 19:00:56,633 - gold_etl - INFO - gold_monthly_area_ev_sales_share: 238 rows
+2025-12-04 19:00:56,634 - gold_etl - INFO - gold_monthly_safety_equipment_adoption: 48 rows
+2025-12-04 19:00:56,636 - gold_etl - INFO - gold_monthly_area_safety_equipment_adoption: 238 rows
+2025-12-04 19:00:56,637 - gold_etl - INFO - gold_inventory_rotation_period: 47 rows
+2025-12-04 19:00:56,638 - gold_etl - INFO - gold_monthly_ebitda: 48 rows
+2025-12-04 19:00:56,639 - gold_etl - INFO - gold_emergency_transportation_cost_share: 48 rows
+2025-12-04 19:00:56,640 - gold_etl - INFO - gold_monthly_product_inventory_rotation: 561 rows
+2025-12-04 19:00:56,642 - gold_etl - INFO - gold_monthly_product_ebitda: 540 rows
+2025-12-04 19:00:56,643 - gold_etl - INFO - gold_monthly_delivery_compliance_rate: 48 rows
+2025-12-04 19:00:56,644 - gold_etl - INFO - gold_monthly_supplier_lead_time_compliance: 808 rows
+2025-12-04 19:00:56,644 - gold_etl - INFO - 計算完了KPI数: 12/12
+2025-12-04 19:00:56,646 - gold_etl - INFO - EV販売率サンプル:
+  year_month  total_revenue  ev_revenue  ev_sales_share           created_at
+0    2022-01      440849278    95966308           21.77  2025-12-04 10:00:56
+1    2022-02      561595810   209347783           37.28  2025-12-04 10:00:56
+2    2022-03      562143994   139817161           24.87  2025-12-04 10:00:56
+2025-12-04 19:00:56,646 - gold_etl - INFO - KPI結果検証完了
+2025-12-04 19:00:56,646 - gold_etl - INFO - === ゴールド層ETL完了 ===
+2025-12-04 19:44:38,221 - gold_etl - INFO - === ゴールド層ETL開始 ===
+2025-12-04 19:44:38,221 - gold_etl - INFO - ゴールド層スキーマを初期化中...
+2025-12-04 19:44:38,236 - gold_etl - INFO - ゴールド層スキーマ初期化完了
+2025-12-04 19:44:38,236 - gold_etl - INFO - KPI計算開始...
+2025-12-04 19:44:38,236 - gold_etl - INFO - 月次商品別粗利率計算開始...
+2025-12-04 19:44:38,362 - gold_etl - INFO - 月次商品別粗利率計算完了: 540 rows
+2025-12-04 19:44:38,362 - gold_etl - INFO - 月次EV販売率計算開始...
+2025-12-04 19:44:38,365 - gold_etl - INFO - 月次EV販売率計算完了: 48 rows
+2025-12-04 19:44:38,365 - gold_etl - INFO - 月次エリア別EV販売率計算開始...
+2025-12-04 19:44:38,371 - gold_etl - INFO - 月次エリア別EV販売率計算完了: 238 rows
+2025-12-04 19:44:38,371 - gold_etl - INFO - 月次先進安全装置適用率計算開始...
+2025-12-04 19:44:38,374 - gold_etl - INFO - 月次先進安全装置適用率計算完了: 48 rows
+2025-12-04 19:44:38,374 - gold_etl - INFO - 月次エリア別先進安全装置適用率計算開始...
+2025-12-04 19:44:38,381 - gold_etl - INFO - 月次エリア別先進安全装置適用率計算完了: 238 rows
+2025-12-04 19:44:38,381 - gold_etl - INFO - 棚卸資産回転期間計算開始...
+2025-12-04 19:44:38,387 - gold_etl - INFO - 棚卸資産回転期間計算完了: 47 rows
+2025-12-04 19:44:38,387 - gold_etl - INFO - 月次EBITDA計算開始...
+2025-12-04 19:44:38,542 - gold_etl - INFO - 月次EBITDA計算完了: 48 rows
+2025-12-04 19:44:38,542 - gold_etl - INFO - 緊急輸送費率計算開始...
+2025-12-04 19:44:38,545 - gold_etl - INFO - 緊急輸送費率計算完了: 48 rows
+2025-12-04 19:44:38,545 - gold_etl - INFO - 月次商品別棚卸資産回転期間計算開始...
+2025-12-04 19:44:38,571 - gold_etl - INFO - 月次商品別棚卸資産回転期間計算完了: 561 rows
+2025-12-04 19:44:38,571 - gold_etl - INFO - 完成品別月次EBITDA計算開始...
+2025-12-04 19:44:38,605 - gold_etl - INFO - 完成品別月次EBITDA計算完了: 540 rows
+2025-12-04 19:44:38,605 - gold_etl - INFO - 月次納期遵守率計算開始...
+2025-12-04 19:44:38,614 - gold_etl - INFO - 月次納期遵守率計算完了: 48 rows
+2025-12-04 19:44:38,614 - gold_etl - INFO - 月次仕入先リードタイム遵守率計算開始...
+2025-12-04 19:44:38,853 - gold_etl - INFO - 月次仕入先リードタイム遵守率計算完了: 809 rows
+2025-12-04 19:44:38,853 - gold_etl - INFO - KPI計算完了: 12/12
+2025-12-04 19:44:38,853 - gold_etl - INFO - KPI結果検証開始...
+2025-12-04 19:44:38,854 - gold_etl - INFO - gold_monthly_product_gross_margin: 540 rows
+2025-12-04 19:44:38,855 - gold_etl - INFO - gold_monthly_ev_sales_share: 48 rows
+2025-12-04 19:44:38,857 - gold_etl - INFO - gold_monthly_area_ev_sales_share: 238 rows
+2025-12-04 19:44:38,858 - gold_etl - INFO - gold_monthly_safety_equipment_adoption: 48 rows
+2025-12-04 19:44:38,859 - gold_etl - INFO - gold_monthly_area_safety_equipment_adoption: 238 rows
+2025-12-04 19:44:38,860 - gold_etl - INFO - gold_inventory_rotation_period: 47 rows
+2025-12-04 19:44:38,862 - gold_etl - INFO - gold_monthly_ebitda: 48 rows
+2025-12-04 19:44:38,863 - gold_etl - INFO - gold_emergency_transportation_cost_share: 48 rows
+2025-12-04 19:44:38,864 - gold_etl - INFO - gold_monthly_product_inventory_rotation: 561 rows
+2025-12-04 19:44:38,870 - gold_etl - INFO - gold_monthly_product_ebitda: 540 rows
+2025-12-04 19:44:38,872 - gold_etl - INFO - gold_monthly_delivery_compliance_rate: 48 rows
+2025-12-04 19:44:38,873 - gold_etl - INFO - gold_monthly_supplier_lead_time_compliance: 809 rows
+2025-12-04 19:44:38,873 - gold_etl - INFO - 計算完了KPI数: 12/12
+2025-12-04 19:44:38,879 - gold_etl - INFO - EV販売率サンプル:
+  year_month  total_revenue  ev_revenue  ev_sales_share           created_at
+0    2022-01      440849278    95966308           21.77  2025-12-04 10:44:38
+1    2022-02      561595810   209347783           37.28  2025-12-04 10:44:38
+2    2022-03      562143994   139817161           24.87  2025-12-04 10:44:38
+2025-12-04 19:44:38,879 - gold_etl - INFO - KPI結果検証完了
+2025-12-04 19:44:38,879 - gold_etl - INFO - === ゴールド層ETL完了 ===
+2025-12-04 20:32:37,513 - gold_etl - INFO - === ゴールド層ETL開始 ===
+2025-12-04 20:32:37,513 - gold_etl - INFO - ゴールド層スキーマを初期化中...
+2025-12-04 20:32:37,528 - gold_etl - INFO - ゴールド層スキーマ初期化完了
+2025-12-04 20:32:37,528 - gold_etl - INFO - KPI計算開始...
+2025-12-04 20:32:37,528 - gold_etl - INFO - 月次商品別粗利率計算開始...
+2025-12-04 20:32:37,646 - gold_etl - INFO - 月次商品別粗利率計算完了: 540 rows
+2025-12-04 20:32:37,646 - gold_etl - INFO - 月次EV販売率計算開始...
+2025-12-04 20:32:37,649 - gold_etl - INFO - 月次EV販売率計算完了: 48 rows
+2025-12-04 20:32:37,649 - gold_etl - INFO - 月次エリア別EV販売率計算開始...
+2025-12-04 20:32:37,654 - gold_etl - INFO - 月次エリア別EV販売率計算完了: 238 rows
+2025-12-04 20:32:37,654 - gold_etl - INFO - 月次先進安全装置適用率計算開始...
+2025-12-04 20:32:37,657 - gold_etl - INFO - 月次先進安全装置適用率計算完了: 48 rows
+2025-12-04 20:32:37,657 - gold_etl - INFO - 月次エリア別先進安全装置適用率計算開始...
+2025-12-04 20:32:37,663 - gold_etl - INFO - 月次エリア別先進安全装置適用率計算完了: 238 rows
+2025-12-04 20:32:37,669 - gold_etl - INFO - 棚卸資産回転期間計算開始...
+2025-12-04 20:32:37,673 - gold_etl - INFO - 棚卸資産回転期間計算完了: 24 rows
+2025-12-04 20:32:37,673 - gold_etl - INFO - 月次EBITDA計算開始...
+2025-12-04 20:32:37,831 - gold_etl - INFO - 月次EBITDA計算完了: 48 rows
+2025-12-04 20:32:37,831 - gold_etl - INFO - 緊急輸送費率計算開始...
+2025-12-04 20:32:37,834 - gold_etl - INFO - 緊急輸送費率計算完了: 48 rows
+2025-12-04 20:32:37,834 - gold_etl - INFO - 月次商品別棚卸資産回転期間計算開始...
+2025-12-04 20:32:37,839 - gold_etl - INFO - 月次商品別棚卸資産回転期間計算完了: 201 rows
+2025-12-04 20:32:37,839 - gold_etl - INFO - 完成品別月次EBITDA計算開始...
+2025-12-04 20:32:37,875 - gold_etl - INFO - 完成品別月次EBITDA計算完了: 540 rows
+2025-12-04 20:32:37,875 - gold_etl - INFO - 月次納期遵守率計算開始...
+2025-12-04 20:32:37,884 - gold_etl - INFO - 月次納期遵守率計算完了: 48 rows
+2025-12-04 20:32:37,884 - gold_etl - INFO - 月次仕入先リードタイム遵守率計算開始...
+2025-12-04 20:32:38,121 - gold_etl - INFO - 月次仕入先リードタイム遵守率計算完了: 803 rows
+2025-12-04 20:32:38,121 - gold_etl - INFO - KPI計算完了: 12/12
+2025-12-04 20:32:38,121 - gold_etl - INFO - KPI結果検証開始...
+2025-12-04 20:32:38,122 - gold_etl - INFO - gold_monthly_product_gross_margin: 540 rows
+2025-12-04 20:32:38,123 - gold_etl - INFO - gold_monthly_ev_sales_share: 48 rows
+2025-12-04 20:32:38,125 - gold_etl - INFO - gold_monthly_area_ev_sales_share: 238 rows
+2025-12-04 20:32:38,126 - gold_etl - INFO - gold_monthly_safety_equipment_adoption: 48 rows
+2025-12-04 20:32:38,127 - gold_etl - INFO - gold_monthly_area_safety_equipment_adoption: 238 rows
+2025-12-04 20:32:38,129 - gold_etl - INFO - gold_inventory_rotation_period: 24 rows
+2025-12-04 20:32:38,130 - gold_etl - INFO - gold_monthly_ebitda: 48 rows
+2025-12-04 20:32:38,131 - gold_etl - INFO - gold_emergency_transportation_cost_share: 48 rows
+2025-12-04 20:32:38,132 - gold_etl - INFO - gold_monthly_product_inventory_rotation: 201 rows
+2025-12-04 20:32:38,134 - gold_etl - INFO - gold_monthly_product_ebitda: 540 rows
+2025-12-04 20:32:38,135 - gold_etl - INFO - gold_monthly_delivery_compliance_rate: 48 rows
+2025-12-04 20:32:38,136 - gold_etl - INFO - gold_monthly_supplier_lead_time_compliance: 803 rows
+2025-12-04 20:32:38,136 - gold_etl - INFO - 計算完了KPI数: 12/12
+2025-12-04 20:32:38,138 - gold_etl - INFO - EV販売率サンプル:
+  year_month  total_revenue  ev_revenue  ev_sales_share           created_at
+0    2022-01      440849278    95966308           21.77  2025-12-04 11:32:37
+1    2022-02      561595810   209347783           37.28  2025-12-04 11:32:37
+2    2022-03      562143994   139817161           24.87  2025-12-04 11:32:37
+2025-12-04 20:32:38,138 - gold_etl - INFO - KPI結果検証完了
+2025-12-04 20:32:38,139 - gold_etl - INFO - === ゴールド層ETL完了 ===

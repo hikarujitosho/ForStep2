@@ -559,21 +559,43 @@ class SilverETL:
              year_month, opening_quantity, received_quantity, issued_quantity,
              closing_quantity, unit_cost, total_value, currency, inventory_category)
             SELECT 
-                (product_id || '-' || location_id || '-' || year_month) as inventory_history_id,
-                location_id,
-                product_id,
-                product_name,
-                year_month,
+                (wms.product_id || '-' || wms.location_id || '-' || wms.year_month) as inventory_history_id,
+                wms.location_id,
+                wms.product_id,
+                wms.product_name,
+                wms.year_month,
                 NULL as opening_quantity,
-                NULL as received_quantity,
+                NULL as received_quantity, 
                 NULL as issued_quantity,
-                inventory_quantity as closing_quantity,
-                NULL as unit_cost,
-                NULL as total_value,
+                wms.inventory_quantity as closing_quantity,
+                -- unit_costの取得：条件マスタから完成品の販売価格を使用
+                COALESCE(price.selling_price_ex_tax, 0) as unit_cost,
+                -- total_valueの計算：unit_cost * closing_quantity
+                CASE 
+                    WHEN wms.inventory_quantity IS NOT NULL 
+                    AND COALESCE(price.selling_price_ex_tax, 0) > 0
+                    THEN ROUND(wms.inventory_quantity * COALESCE(price.selling_price_ex_tax, 0), 2)
+                    ELSE NULL
+                END as total_value,
                 'JPY' as currency,
-                inventory_status as inventory_category
-            FROM bronze_wms_monthly_inventory
-            WHERE product_id IS NOT NULL AND location_id IS NOT NULL
+                wms.inventory_status as inventory_category
+            FROM bronze_wms_monthly_inventory wms
+            LEFT JOIN (
+                -- 条件マスタから完成品の販売価格を取得（月次期間内で有効な価格）
+                SELECT 
+                    product_id,
+                    selling_price_ex_tax,
+                    valid_from,
+                    valid_to,
+                    -- 月の最初の日付と最後の日付を計算
+                    SUBSTR(valid_from, 1, 7) as price_year_month
+                FROM bronze_erp_price_condition
+                WHERE selling_price_ex_tax IS NOT NULL AND selling_price_ex_tax > 0
+            ) price ON wms.product_id = price.product_id 
+            AND wms.year_month = price.price_year_month
+            WHERE wms.product_id IS NOT NULL 
+            AND wms.location_id IS NOT NULL
+            AND wms.inventory_quantity IS NOT NULL
             """
             
             self.db_manager.execute_sql(sql)

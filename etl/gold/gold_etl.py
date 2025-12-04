@@ -361,7 +361,7 @@ class GoldETL:
             return False
     
     def calculate_inventory_rotation_period(self) -> bool:
-        """棚卸資産回転期間の計算 - 期末在庫金額 / 売上原価"""
+        """棚卸資産回転期間の計算 - 期末在庫金額 / 売上"""
         try:
             self.logger.info("棚卸資産回転期間計算開始...")
             
@@ -377,52 +377,26 @@ class GoldETL:
                 FROM silver_inventory_data inv
                 GROUP BY inv.year_month
             ),
-            actual_cost_of_sales AS (
-                -- 実際の売上原価（調達伝票から直接材料費を集計）
-                SELECT 
-                    p.year_month,
-                    SUM(p.line_total_ex_tax) as direct_material_cost
-                FROM silver_procurement_data p
-                WHERE p.material_type = 'direct'
-                    AND p.line_total_ex_tax IS NOT NULL
-                GROUP BY p.year_month
-            ),
             monthly_sales AS (
-                -- 月次売上
+                -- 月次売上（受注伝票から）
                 SELECT 
                     o.year_month,
                     SUM(o.line_total_ex_tax) as total_sales
                 FROM silver_order_data o
                 WHERE o.line_total_ex_tax IS NOT NULL
                 GROUP BY o.year_month
-            ),
-            cost_calculation AS (
-                -- 売上原価の計算（実際の直接材料費 + 間接費配賦）
-                SELECT 
-                    ms.year_month,
-                    ms.total_sales,
-                    COALESCE(acs.direct_material_cost, 0) as direct_cost,
-                    -- 間接材費を売上比例で配賦
-                    COALESCE(acs.direct_material_cost, 0) + 
-                    CASE 
-                        WHEN ms.total_sales > 0 AND acs.direct_material_cost > 0
-                        THEN acs.direct_material_cost * 0.2  -- 直接材に対して20%の間接費
-                        ELSE ms.total_sales * 0.7  -- フォールバック（従来の固定比率）
-                    END as total_cost_of_sales
-                FROM monthly_sales ms
-                LEFT JOIN actual_cost_of_sales acs ON ms.year_month = acs.year_month
             )
             SELECT 
                 inv.year_month,
                 inv.total_inventory_value as avg_inventory_value,
-                COALESCE(cost.total_cost_of_sales, 0) as monthly_cost_of_sales,
+                COALESCE(sales.total_sales, 0) as monthly_cost_of_sales,
                 CASE 
-                    WHEN COALESCE(cost.total_cost_of_sales, 0) > 0 
-                    THEN ROUND(inv.total_inventory_value * 30.0 / cost.total_cost_of_sales, 1)
+                    WHEN COALESCE(sales.total_sales, 0) > 0 
+                    THEN ROUND(inv.total_inventory_value * 30.0 / sales.total_sales, 1)
                     ELSE NULL 
                 END as rotation_period_days
             FROM inventory_summary inv
-            LEFT JOIN cost_calculation cost ON inv.year_month = cost.year_month
+            LEFT JOIN monthly_sales sales ON inv.year_month = sales.year_month
             WHERE inv.total_inventory_value > 0
             ORDER BY inv.year_month
             """
@@ -528,7 +502,7 @@ class GoldETL:
             return False
     
     def calculate_monthly_product_inventory_rotation(self) -> bool:
-        """月次商品別棚卸資産回転期間計算 - 商品別期末在庫金額 / 商品別売上原価"""
+        """月次商品別棚卸資産回転期間計算 - 商品別期末在庫金額 / 商品別売上"""
         try:
             self.logger.info("月次商品別棚卸資産回転期間計算開始...")
             
@@ -547,17 +521,6 @@ class GoldETL:
                 WHERE inv.total_value IS NOT NULL
                 GROUP BY inv.year_month, inv.product_id, i.product_name
             ),
-            product_procurement_cost AS (
-                -- 商品別直接材料費
-                SELECT 
-                    p.year_month,
-                    p.product_id,
-                    SUM(p.line_total_ex_tax) as direct_material_cost
-                FROM silver_procurement_data p
-                WHERE p.material_type = 'direct'
-                    AND p.line_total_ex_tax IS NOT NULL
-                GROUP BY p.year_month, p.product_id
-            ),
             product_sales AS (
                 -- 商品別売上
                 SELECT 
@@ -567,38 +530,21 @@ class GoldETL:
                 FROM silver_order_data o
                 WHERE o.line_total_ex_tax IS NOT NULL
                 GROUP BY o.year_month, o.product_id
-            ),
-            product_cost_calculation AS (
-                -- 商品別売上原価の計算
-                SELECT 
-                    ps.year_month,
-                    ps.product_id,
-                    ps.total_sales,
-                    COALESCE(ppc.direct_material_cost, 0) as direct_cost,
-                    -- 商品別売上原価 = 直接材料費 + 間接費配賦
-                    CASE 
-                        WHEN ppc.direct_material_cost > 0
-                        THEN ppc.direct_material_cost * 1.2  -- 直接材に20%の間接費を上乗せ
-                        ELSE ps.total_sales * 0.7  -- フォールバック（従来の固定比率）
-                    END as monthly_cost_of_sales
-                FROM product_sales ps
-                LEFT JOIN product_procurement_cost ppc 
-                    ON ps.year_month = ppc.year_month AND ps.product_id = ppc.product_id
             )
             SELECT 
                 inv.year_month,
                 inv.product_id,
                 inv.product_name,
                 inv.avg_inventory_value,
-                COALESCE(cost.monthly_cost_of_sales, 0) as monthly_cost_of_sales,
+                COALESCE(sales.total_sales, 0) as monthly_cost_of_sales,
                 CASE 
-                    WHEN COALESCE(cost.monthly_cost_of_sales, 0) > 0 AND inv.avg_inventory_value > 0
-                    THEN ROUND(inv.avg_inventory_value * 30.0 / cost.monthly_cost_of_sales, 1)
+                    WHEN COALESCE(sales.total_sales, 0) > 0 AND inv.avg_inventory_value > 0
+                    THEN ROUND(inv.avg_inventory_value * 30.0 / sales.total_sales, 1)
                     ELSE NULL 
                 END as rotation_period_days
             FROM inventory_data inv
-            LEFT JOIN product_cost_calculation cost 
-                ON inv.year_month = cost.year_month AND inv.product_id = cost.product_id
+            LEFT JOIN product_sales sales 
+                ON inv.year_month = sales.year_month AND inv.product_id = sales.product_id
             WHERE inv.avg_inventory_value > 0
             ORDER BY inv.year_month, inv.product_id
             """
