@@ -1,0 +1,70 @@
+2025-12-05 08:50:59,154 - bronze_etl - INFO - === ブロンズ層ETL開始 ===
+2025-12-05 08:50:59,156 - bronze_etl - INFO - データベーススキーマを初期化中...
+2025-12-05 08:50:59,166 - bronze_etl - INFO - データベーススキーマ初期化完了
+2025-12-05 08:50:59,167 - bronze_etl - INFO - 全システムデータロード開始...
+2025-12-05 08:50:59,167 - bronze_etl - INFO - ERPシステムのデータロードを開始...
+2025-12-05 08:50:59,167 - bronze_etl - INFO - CSVロード開始: 受注伝票_header.csv -> bronze_erp_order_header
+2025-12-05 08:50:59,210 - bronze_etl - INFO - CSVロード完了: bronze_erp_order_header (935 rows)
+2025-12-05 08:50:59,212 - bronze_etl - INFO - CSVロード開始: 受注伝票_item.csv -> bronze_erp_order_item
+2025-12-05 08:50:59,252 - bronze_etl - INFO - CSVロード完了: bronze_erp_order_item (1909 rows)
+2025-12-05 08:50:59,252 - bronze_etl - INFO - CSVロード開始: 品目マスタ.csv -> bronze_erp_item_master
+2025-12-05 08:50:59,281 - bronze_etl - INFO - CSVロード完了: bronze_erp_item_master (15 rows)
+2025-12-05 08:50:59,282 - bronze_etl - INFO - CSVロード開始: 条件マスタ.csv -> bronze_erp_price_condition
+2025-12-05 08:50:59,322 - bronze_etl - INFO - CSVロード完了: bronze_erp_price_condition (474 rows)
+2025-12-05 08:50:59,322 - bronze_etl - INFO - CSVロード開始: BOMマスタ.csv -> bronze_erp_bom_master
+2025-12-05 08:50:59,357 - bronze_etl - INFO - CSVロード完了: bronze_erp_bom_master (275 rows)
+2025-12-05 08:50:59,357 - bronze_etl - INFO - CSVロード開始: 取引先マスタ.csv -> bronze_erp_partner_master
+2025-12-05 08:50:59,398 - bronze_etl - INFO - CSVロード完了: bronze_erp_partner_master (31 rows)
+2025-12-05 08:50:59,400 - bronze_etl - INFO - CSVロード開始: 拠点マスタ.csv -> bronze_erp_location_master
+2025-12-05 08:50:59,428 - bronze_etl - INFO - CSVロード完了: bronze_erp_location_master (5 rows)
+2025-12-05 08:50:59,428 - bronze_etl - INFO - ERPシステム完了: 7/7 ファイル
+2025-12-05 08:50:59,431 - bronze_etl - INFO - P2Pシステムのデータロードを開始...
+2025-12-05 08:50:59,432 - bronze_etl - INFO - CSVロード開始: 調達伝票_header.csv -> bronze_p2p_purchase_header
+2025-12-05 08:51:00,069 - bronze_etl - INFO - CSVロード完了: bronze_p2p_purchase_header (22590 rows)
+2025-12-05 08:51:00,069 - bronze_etl - INFO - CSVロード開始: 調達伝票_item.csv -> bronze_p2p_purchase_item
+2025-12-05 08:51:01,177 - bronze_etl - INFO - CSVロード完了: bronze_p2p_purchase_item (23175 rows)
+2025-12-05 08:51:01,177 - bronze_etl - INFO - CSVロード開始: BOMマスタ.csv -> bronze_p2p_bom_master
+2025-12-05 08:51:01,220 - bronze_etl - INFO - CSVロード完了: bronze_p2p_bom_master (275 rows)
+2025-12-05 08:51:01,220 - bronze_etl - INFO - CSVロード開始: 取引先マスタ.csv -> bronze_p2p_partner_master
+2025-12-05 08:51:01,258 - bronze_etl - INFO - CSVロード完了: bronze_p2p_partner_master (31 rows)
+2025-12-05 08:51:01,259 - bronze_etl - INFO - P2Pシステム完了: 4/4 ファイル
+2025-12-05 08:51:01,259 - bronze_etl - INFO - MESシステムのデータロードを開始...
+2025-12-05 08:51:01,260 - bronze_etl - INFO - CSVロード開始: 出荷伝票_header.csv -> bronze_mes_shipment_header
+2025-12-05 08:51:01,302 - bronze_etl - INFO - CSVロード完了: bronze_mes_shipment_header (1637 rows)
+2025-12-05 08:51:01,302 - bronze_etl - INFO - CSVロード開始: 出荷伝票_item.csv -> bronze_mes_shipment_item
+2025-12-05 08:51:01,410 - bronze_etl - INFO - CSVロード完了: bronze_mes_shipment_item (2969 rows)
+2025-12-05 08:51:01,410 - bronze_etl - INFO - CSVロード開始: 取引先マスタ.csv -> bronze_mes_partner_master
+2025-12-05 08:51:01,451 - bronze_etl - INFO - CSVロード完了: bronze_mes_partner_master (31 rows)
+2025-12-05 08:51:01,451 - bronze_etl - INFO - CSVロード開始: 拠点マスタ.csv -> bronze_mes_location_master
+2025-12-05 08:51:01,487 - bronze_etl - INFO - CSVロード完了: bronze_mes_location_master (5 rows)
+2025-12-05 08:51:01,487 - bronze_etl - INFO - MESシステム完了: 4/4 ファイル
+2025-12-05 08:51:01,487 - bronze_etl - INFO - TMSシステムのデータロードを開始...
+2025-12-05 08:51:01,487 - bronze_etl - INFO - CSVロード開始: 輸送コスト.csv -> bronze_tms_transportation_cost
+2025-12-05 08:51:01,543 - bronze_etl - INFO - CSVロード完了: bronze_tms_transportation_cost (2196 rows)
+2025-12-05 08:51:01,544 - bronze_etl - INFO - CSVロード開始: 取引先マスタ.csv -> bronze_tms_partner_master
+2025-12-05 08:51:01,583 - bronze_etl - INFO - CSVロード完了: bronze_tms_partner_master (31 rows)
+2025-12-05 08:51:01,584 - bronze_etl - INFO - CSVロード開始: 拠点マスタ.csv -> bronze_tms_location_master
+2025-12-05 08:51:01,622 - bronze_etl - INFO - CSVロード完了: bronze_tms_location_master (5 rows)
+2025-12-05 08:51:01,622 - bronze_etl - INFO - TMSシステム完了: 3/3 ファイル
+2025-12-05 08:51:01,622 - bronze_etl - INFO - HRシステムのデータロードを開始...
+2025-12-05 08:51:01,622 - bronze_etl - INFO - CSVロード開始: 給与テーブル.csv -> bronze_hr_payroll
+2025-12-05 08:51:01,664 - bronze_etl - INFO - CSVロード完了: bronze_hr_payroll (960 rows)
+2025-12-05 08:51:01,664 - bronze_etl - INFO - HRシステム完了: 1/1 ファイル
+2025-12-05 08:51:01,664 - bronze_etl - INFO - WMSシステムのデータロードを開始...
+2025-12-05 08:51:01,664 - bronze_etl - INFO - CSVロード開始: 月次在庫履歴.csv -> bronze_wms_monthly_inventory
+2025-12-05 08:51:01,726 - bronze_etl - INFO - CSVロード完了: bronze_wms_monthly_inventory (2773 rows)
+2025-12-05 08:51:01,728 - bronze_etl - INFO - CSVロード開始: 現在在庫.csv -> bronze_wms_current_inventory
+2025-12-05 08:51:01,764 - bronze_etl - INFO - CSVロード完了: bronze_wms_current_inventory (55 rows)
+2025-12-05 08:51:01,765 - bronze_etl - INFO - CSVロード開始: 拠点マスタ.csv -> bronze_wms_location_master
+2025-12-05 08:51:01,801 - bronze_etl - INFO - CSVロード完了: bronze_wms_location_master (5 rows)
+2025-12-05 08:51:01,801 - bronze_etl - INFO - WMSシステム完了: 3/3 ファイル
+2025-12-05 08:51:01,801 - bronze_etl - INFO - データロード完了: 6/6 システム成功
+2025-12-05 08:51:01,801 - bronze_etl - INFO - 成功システム: ['ERP', 'P2P', 'MES', 'TMS', 'HR', 'WMS']
+2025-12-05 08:51:01,801 - bronze_etl - INFO - データ品質チェック開始...
+2025-12-05 08:51:01,803 - bronze_etl - INFO - bronze_erp_item_master: 15 rows
+2025-12-05 08:51:01,806 - bronze_etl - INFO - bronze_erp_order_header: 935 rows
+2025-12-05 08:51:01,813 - bronze_etl - INFO - bronze_p2p_purchase_header: 22590 rows
+2025-12-05 08:51:01,817 - bronze_etl - INFO - bronze_mes_shipment_header: 1637 rows
+2025-12-05 08:51:01,819 - bronze_etl - INFO - bronze_wms_monthly_inventory: 2773 rows
+2025-12-05 08:51:01,819 - bronze_etl - INFO - データ品質チェック完了
+2025-12-05 08:51:01,820 - bronze_etl - INFO - === ブロンズ層ETL完了 ===

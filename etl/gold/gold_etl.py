@@ -151,34 +151,44 @@ class GoldETL:
             sql = """
             INSERT OR REPLACE INTO gold_monthly_product_gross_margin 
             (year_month, product_id, product_name, revenue, cost, gross_profit, gross_margin)
-            WITH monthly_product_sales AS (
+            WITH order_summary AS (
+                -- 受注データを月次・商品別に集計
                 SELECT 
                     o.year_month,
                     o.product_id,
                     i.product_name,
-                    SUM(o.line_total_ex_tax) as revenue,
-                    COALESCE(SUM(p.line_total_ex_tax), SUM(o.line_total_ex_tax * 0.7)) as total_procurement_cost
+                    SUM(o.line_total_ex_tax) as revenue
                 FROM silver_order_data o
                 JOIN silver_item_master i ON o.product_id = i.product_id
-                LEFT JOIN silver_procurement_data p ON o.product_id = p.product_id 
-                    AND o.year_month = p.year_month
                 WHERE o.line_total_ex_tax IS NOT NULL
                 GROUP BY o.year_month, o.product_id, i.product_name
+            ),
+            procurement_summary AS (
+                -- 調達データを月次・商品別に集計（部品コストを全て合計）
+                SELECT 
+                    year_month,
+                    product_id,
+                    SUM(line_total_ex_tax) as total_cost
+                FROM silver_procurement_data
+                GROUP BY year_month, product_id
             )
             SELECT 
-                year_month,
-                product_id,
-                product_name,
-                revenue,
-                total_procurement_cost as cost,
-                revenue - total_procurement_cost as gross_profit,
+                o.year_month,
+                o.product_id,
+                o.product_name,
+                o.revenue,
+                COALESCE(p.total_cost, o.revenue * 0.6) as cost,
+                o.revenue - COALESCE(p.total_cost, o.revenue * 0.6) as gross_profit,
                 CASE 
-                    WHEN revenue > 0 THEN 
-                        ROUND((revenue - total_procurement_cost) * 100.0 / revenue, 2)
+                    WHEN o.revenue > 0 THEN 
+                        ROUND((o.revenue - COALESCE(p.total_cost, o.revenue * 0.6)) * 100.0 / o.revenue, 2)
                     ELSE NULL
                 END as gross_margin
-            FROM monthly_product_sales
-            WHERE revenue > 0
+            FROM order_summary o
+            LEFT JOIN procurement_summary p 
+                ON o.product_id = p.product_id 
+                AND o.year_month = p.year_month
+            WHERE o.revenue > 0
             """
             
             self.db_manager.execute_sql(sql)
