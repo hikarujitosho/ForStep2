@@ -815,3 +815,38 @@
 2025-12-04 19:00:56,034 - silver_etl - INFO - 安全装置搭載車種数: 15
 2025-12-04 19:00:56,034 - silver_etl - INFO - シルバー層データ品質チェック完了
 2025-12-04 19:00:56,034 - silver_etl - INFO - === シルバー層ETL完了 ===
+2025-12-04 20:32:37,308 - silver_etl - INFO - === シルバー層ETL開始 ===
+2025-12-04 20:32:37,309 - silver_etl - INFO - シルバー層スキーマを初期化中...
+2025-12-04 20:32:37,317 - silver_etl - INFO - シルバー層スキーマ初期化完了
+2025-12-04 20:32:37,317 - silver_etl - INFO - 統合品目マスタ作成開始...
+2025-12-04 20:32:37,319 - silver_etl - INFO - 統合品目マスタ作成完了: 15 rows
+2025-12-04 20:32:37,319 - silver_etl - INFO - 統合取引先マスタ作成開始...
+2025-12-04 20:32:37,324 - silver_etl - INFO - 統合取引先マスタ作成完了: 31 rows
+2025-12-04 20:32:37,324 - silver_etl - INFO - 統合拠点マスタ作成開始...
+2025-12-04 20:32:37,327 - silver_etl - INFO - 統合拠点マスタ作成完了: 5 rows
+2025-12-04 20:32:37,327 - silver_etl - INFO - 受注データ処理開始...
+2025-12-04 20:32:37,340 - silver_etl - INFO - 受注データ処理完了: 1909 rows
+2025-12-04 20:32:37,340 - silver_etl - INFO - 調達データ処理開始...
+2025-12-04 20:32:37,447 - silver_etl - INFO - 調達データ処理完了: 22779 rows
+2025-12-04 20:32:37,447 - silver_etl - INFO - 出荷データ処理開始...
+2025-12-04 20:32:37,462 - silver_etl - INFO - 出荷データ処理完了: 2969 rows
+2025-12-04 20:32:37,462 - silver_etl - INFO - 輸送コストデータ処理開始...
+2025-12-04 20:32:37,466 - silver_etl - INFO - 輸送コストデータ処理完了: 2196 rows
+2025-12-04 20:32:37,466 - silver_etl - INFO - 給与データ処理開始...
+2025-12-04 20:32:37,469 - silver_etl - INFO - 給与データ処理完了: 960 rows
+2025-12-04 20:32:37,469 - silver_etl - INFO - 在庫データ処理開始...
+2025-12-04 20:32:37,503 - silver_etl - INFO - 在庫データ処理完了: 2773 rows
+2025-12-04 20:32:37,503 - silver_etl - INFO - シルバー層データ品質チェック開始...
+2025-12-04 20:32:37,504 - silver_etl - INFO - silver_item_master: 15 rows
+2025-12-04 20:32:37,505 - silver_etl - INFO - silver_partner_master: 31 rows
+2025-12-04 20:32:37,506 - silver_etl - INFO - silver_location_master: 5 rows
+2025-12-04 20:32:37,507 - silver_etl - INFO - silver_order_data: 1909 rows
+2025-12-04 20:32:37,508 - silver_etl - INFO - silver_procurement_data: 22779 rows
+2025-12-04 20:32:37,509 - silver_etl - INFO - silver_shipment_data: 2969 rows
+2025-12-04 20:32:37,510 - silver_etl - INFO - silver_transportation_cost: 2196 rows
+2025-12-04 20:32:37,511 - silver_etl - INFO - silver_payroll_data: 960 rows
+2025-12-04 20:32:37,512 - silver_etl - INFO - silver_inventory_data: 2773 rows
+2025-12-04 20:32:37,513 - silver_etl - INFO - EV車種数: 4
+2025-12-04 20:32:37,513 - silver_etl - INFO - 安全装置搭載車種数: 15
+2025-12-04 20:32:37,513 - silver_etl - INFO - シルバー層データ品質チェック完了
+2025-12-04 20:32:37,513 - silver_etl - INFO - === シルバー層ETL完了 ===
