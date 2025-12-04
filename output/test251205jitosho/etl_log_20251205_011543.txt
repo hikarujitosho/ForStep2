@@ -1,0 +1,414 @@
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] ETL処理開始
+[2025-12-05 01:15:43] 開始時刻: 2025-12-05 01:15:43
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] 
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] CSVファイルの存在確認
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] ✓ header: C:\Users\PC\dev\ForStep2\data\Bronze\P2P\調達伝票_header.csv
+[2025-12-05 01:15:43] ✓ item: C:\Users\PC\dev\ForStep2\data\Bronze\P2P\調達伝票_item.csv
+[2025-12-05 01:15:43] ✓ supplier: C:\Users\PC\dev\ForStep2\data\Bronze\P2P\取引先マスタ.csv
+[2025-12-05 01:15:43] すべてのCSVファイルが存在します
+
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] CSVファイルの読み込み
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] 読み込み中: 調達伝票_header.csv
+[2025-12-05 01:15:43]   レコード数: 22,590
+[2025-12-05 01:15:43] 読み込み中: 調達伝票_item.csv
+[2025-12-05 01:15:43]   レコード数: 23,175
+[2025-12-05 01:15:43] 読み込み中: 取引先マスタ.csv
+[2025-12-05 01:15:43]   レコード数: 31
+[2025-12-05 01:15:43] CSVファイルの読み込み完了
+
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] データベース接続
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] 接続先: C:\Users\PC\dev\ForStep2\data\kpi_database.db
+
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] Silver層: サプライヤーディメンション投入
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] 投入完了: 18 レコード
+
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] Silver層: 資材ディメンション投入
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] 投入完了: 36 レコード
+
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] Silver層: 調達ファクトテーブル投入
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] 間接材明細レコード数: 780
+[2025-12-05 01:15:43] 結合後レコード数: 780
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002026-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002027-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002027-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002028-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002028-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002029-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002030-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002030-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002031-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002032-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002033-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002034-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002035-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002035-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002036-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002037-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002037-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002038-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002039-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002040-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002041-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002041-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002042-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002042-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002043-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002043-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002044-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002045-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002046-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002047-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002048-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002048-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002049-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002049-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002050-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002051-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002052-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002053-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002053-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002054-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002055-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002056-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002057-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002058-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002059-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002059-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002060-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002061-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002062-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002062-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002063-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002064-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002065-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002065-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002066-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002067-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002068-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002069-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002070-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002071-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002072-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002073-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002074-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002075-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002076-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002077-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002078-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002079-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002080-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002080-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002081-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002081-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002082-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002082-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002083-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002083-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002084-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002085-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002086-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002087-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002088-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002089-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002090-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2022-002090-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002091-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002091-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002092-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002093-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002094-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002094-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002095-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002096-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002096-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002097-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002098-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002099-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002099-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002100-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002101-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002102-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002103-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002103-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002104-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002104-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002105-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002106-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002107-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002108-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002109-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002109-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002110-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002111-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002112-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002112-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002113-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002114-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002115-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002116-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002117-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002118-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002119-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002120-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002121-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002121-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002122-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002123-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002123-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002124-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002125-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002126-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002127-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002128-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002129-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002130-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002131-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002132-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002133-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002133-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002134-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002134-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002135-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002136-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002136-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002137-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002137-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002138-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002138-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002139-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002139-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002140-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002140-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002141-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002142-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002143-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002143-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002144-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002145-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002146-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002147-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002148-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002149-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002150-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002150-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002151-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002152-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002153-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002154-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002154-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2023-002155-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002156-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002156-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002157-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002158-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002159-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002159-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002160-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002161-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002162-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002162-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002163-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002164-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002164-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002165-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002165-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002166-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002167-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002168-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002169-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002170-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002170-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002171-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002171-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002172-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002173-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002174-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002175-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002176-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002176-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002177-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002178-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002178-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002179-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002180-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002180-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002181-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002182-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002183-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002183-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002184-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002185-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002186-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002186-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002187-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002188-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002189-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002190-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002191-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002192-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002193-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002194-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002195-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002195-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002196-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002196-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002197-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002198-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002198-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002199-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002200-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002201-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002202-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002202-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002203-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002204-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002204-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002205-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002206-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002207-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002208-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002209-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002209-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002210-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002211-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002212-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002213-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002214-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002215-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002216-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002217-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002218-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002219-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002220-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2024-002221-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002222-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002223-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002224-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002225-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002226-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002226-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002227-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002228-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002229-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002230-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002230-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002231-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002232-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002233-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002234-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002234-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002235-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002235-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002236-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002237-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002238-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002239-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002240-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002240-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002241-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002242-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002243-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002244-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002245-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002246-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002247-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002248-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002249-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002250-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002251-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002252-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002253-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002254-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002255-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002256-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002257-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002258-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002258-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002259-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002260-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002260-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002261-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002261-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002262-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002263-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002264-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002265-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002266-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002267-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002268-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002269-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002270-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002270-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002271-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002272-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002272-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002273-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002273-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002274-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002275-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002275-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002276-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002276-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002277-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002278-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002279-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002279-00002): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002280-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002281-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002282-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002283-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002284-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43]   警告: レコード挿入失敗 (procurement_fact_id=PO-2025-002285-00001): UNIQUE constraint failed: silver_procurement_fact.procurement_fact_id
+[2025-12-05 01:15:43] 投入完了: 449 レコード
+
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] Gold層: 月次コスト集計テーブル投入
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] 投入完了: 443 レコード
+
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] Gold層: コスト削減率テーブル投入
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] 分析軸: 全社レベル (overall)
+[2025-12-05 01:15:43]   投入: 47 レコード
+[2025-12-05 01:15:43] 分析軸: サプライヤー別 (supplier)
+[2025-12-05 01:15:43]   投入: 174 レコード
+[2025-12-05 01:15:43] 分析軸: 資材カテゴリ別 (category)
+[2025-12-05 01:15:43]   投入: 312 レコード
+[2025-12-05 01:15:43] Gold層データ投入完了
+
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] データ品質チェック
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] 異常な単価: 0 件
+[2025-12-05 01:15:43] 異常な変動(>50%): 107 件
+[2025-12-05 01:15:43] 
+データ完全性 (直近5ヶ月):
+[2025-12-05 01:15:43]   2025-12: 完全性率 66.67% (前年データ欠損: 3件)
+[2025-12-05 01:15:43]   2025-11: 完全性率 63.64% (前年データ欠損: 4件)
+[2025-12-05 01:15:43]   2025-10: 完全性率 70.0% (前年データ欠損: 3件)
+[2025-12-05 01:15:43]   2025-09: 完全性率 77.78% (前年データ欠損: 2件)
+[2025-12-05 01:15:43]   2025-08: 完全性率 90.91% (前年データ欠損: 1件)
+[2025-12-05 01:15:43] 
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] ETL処理完了
+[2025-12-05 01:15:43] 終了時刻: 2025-12-05 01:15:43
+[2025-12-05 01:15:43] 処理時間: 0.73秒
+[2025-12-05 01:15:43] ============================================================
+[2025-12-05 01:15:43] 
+ログファイル: C:\Users\PC\dev\ForStep2\logs\etl_log_20251205_011543.txt
+[2025-12-05 01:15:43] データベース: C:\Users\PC\dev\ForStep2\data\kpi_database.db
