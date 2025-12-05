@@ -1,0 +1,20 @@
+﻿product_id,product_name,base_unit_quantity,brand_name,item_group,item_hierarchy,detail_category,tax_classification,transport_group,import_export_group,country_of_origin
+FIT-GR3,FIT,1,HONDA,compact_car,ICE,safety_equipped,taxable,domestic,domestic,Japan
+FRD-GB5,FREED,1,HONDA,minivan,ICE,safety_equipped,taxable,domestic,domestic,Japan
+VZL-RV3,VEZEL,1,HONDA,suv,ICE,safety_equipped,taxable,domestic,domestic,Japan
+SWN-RP6,STEP WGN,1,HONDA,minivan,ICE,safety_equipped,taxable,domestic,domestic,Japan
+CRV-RT5,CR-V,1,HONDA,suv,ICE,safety_equipped,taxable,domestic,export,Japan
+ODY-RC1,ODYSSEY,1,HONDA,premium_minivan,ICE,safety_equipped,taxable,domestic,export,Japan
+PLT-YF3,PILOT,1,HONDA,premium_suv,ICE,safety_equipped,taxable,domestic,export,Japan
+RDG-YF6,RIDGELINE,1,HONDA,pickup_truck,ICE,safety_equipped,taxable,domestic,export,Japan
+PSP-YF7,PASSPORT,1,HONDA,suv,ICE,safety_equipped,taxable,domestic,export,Japan
+ZRV-RZ3,ZR-V,1,HONDA,compact_suv,ICE,safety_equipped,taxable,domestic,domestic,Japan
+ACD-CV1,ACCORD,1,HONDA,sedan,ICE,safety_equipped,taxable,domestic,export,Japan
+HDE-ZC1,Honda e,1,HONDA,compact_ev,EV,safety_equipped,taxable,domestic,domestic,Japan
+NOE-JG4,N-ONE e:,1,HONDA,compact_suv_ev,EV,safety_equipped,taxable,domestic,domestic,Japan
+ENP-ENP1,e:NP1,1,HONDA,suv_ev,EV,safety_equipped,taxable,domestic,export,Japan
+PRO-ZC5,Prologue,1,HONDA,premium_suv_ev,EV,safety_equipped,taxable,domestic,export,Japan
+
+
+
+
