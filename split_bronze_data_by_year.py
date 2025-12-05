@@ -82,9 +82,9 @@ def split_csv_by_year(input_file, date_column, cutoff_year=2025):
     return True
 
 def main():
-    # テスト: 調達伝票_item.csv
-    input_file = r"C:\Users\PC\dev\ForStep2\data\Bronze\P2P\調達伝票_item.csv"
-    date_column = "ship_date"
+    # テスト: 輸送コスト.csv
+    input_file = r"C:\Users\PC\dev\ForStep2\data\Bronze\TMS\輸送コスト.csv"
+    date_column = "billing_date"
     
     success = split_csv_by_year(input_file, date_column, cutoff_year=2025)
     
